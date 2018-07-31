@@ -1,0 +1,24 @@
+{
+  "name": "demo-app",
+  "version": "0.0.1",
+  "scripts": {
+    "compile": "tsc",
+    "test": "npm run compile && jest --detectOpenHandles -c jest-runner.json",
+    "demo": "npm run compile && node build/bootstrap.js",
+    "start": "npm run demo"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.1",
+    "@types/mu2": "0.0.30",
+    "@types/node": "^10.5.4",
+    "jest": "^23.4.2",
+    "ts-jest": "^23.0.1",
+    "tslint": "^5.11.0",
+    "typescript": "^2.9.2"
+  },
+  "dependencies": {
+    "@typeix/rexxar": "^1.2.0",
+    "mime": "^2.3.1",
+    "mu2": "^0.5.21"
+  }
+}
