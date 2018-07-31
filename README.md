@@ -22,20 +22,7 @@ Typeix has dependency injection inspired by Angular 2
 * http://localhost:9000/favicon.ico
 * http://localhost:9000/assets/favicon.ico
 
-# @typeix is typescript API for RESTful Services for Node.js
+# @typeix/rexxar is typescript API for RESTful Services for Node.js
 
 * Works with node gte 6.x.x
-* [Typeix](https://github.com/igorzg/typeix) has dependency injection inspired by Angular 2
 
-
-
-## Typeix Features
-* Dependency Injection - @Inject
-* Modular design
-* MVC structure
-* Component driven -> singletons -> depends on injection level
-* Request Filters
-* Nice routing features -> supports static && dynamic routing && reverse router
-* Controller inheritance
-
-[<< back](http://www.igorivanovic.info/)
