@@ -10,6 +10,7 @@
   "devDependencies": {
     "@types/jest": "^23.3.1",
     "@types/mu2": "0.0.30",
+    "@types/mime": "^2.0.0",
     "@types/node": "^10.5.4",
     "jest": "^23.4.2",
     "ts-jest": "^23.0.1",

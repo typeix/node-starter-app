@@ -9,7 +9,7 @@ import {
   ErrorMessage,
   ServerError, StatusCodes
 } from "@typeix/rexxar";
-import {lookup} from "mime";
+import {getType} from "mime";
 /**
  * Controller example
  * @constructor
@@ -86,7 +86,7 @@ export class CoreController {
    */
   @Action("assets")
   fileLoadAction(@Param("file") file: string): Promise<Buffer> {
-    let type = lookup(Assets.publicPath(file));
+    let type = getType(Assets.publicPath(file));
     this.request.setContentType(type);
     return this.assetLoader.load(file);
   }
