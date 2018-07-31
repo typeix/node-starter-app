@@ -1,7 +1,6 @@
-# Typix demo application
-[![Build Status](https://travis-ci.org/igorzg/typeix-demo-app.svg?branch=master)](https://travis-ci.org/igorzg/typeix-demo-app)
+# @typeix/rexxar demo application
 
-This is runnable example, preview of application development with typeix
+This is runnable example, preview of application development with @typeix/rexxar
 
 ### Running demo:
 * Checkout repo
