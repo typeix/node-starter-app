@@ -1,4 +1,4 @@
-import {Route, Injectable, IResolvedRoute, Inject, RestMethods} from "@typeix/rexxar";
+import {Route, Injectable, IResolvedRoute, Inject, HttpMethod} from "@typeix/rexxar";
 import {InMemoryCache} from "./in-memory-cache";
 
 /**
@@ -13,20 +13,19 @@ import {InMemoryCache} from "./in-memory-cache";
 @Injectable()
 export class DynamicRouteRule implements Route {
 
-    @Inject(InMemoryCache)
-    cache: InMemoryCache;
+    @Inject() cache: InMemoryCache;
 
     /**
      * Dynamic parse request example
      * @param pathName
      * @param method
      * @param headers
-     * @returns {Promise<{method: RestMethods, params: {}, route: string}>}
+     * @returns {Promise<{method: HttpMethod, params: {}, route: string}>}
      */
-    parseRequest(pathName: string, method: string, headers: { [key: string]: any; }): Promise<IResolvedRoute | boolean> {
+    parseRequest(pathName: string, method: string, headers: { [key: string]: any; }): Promise<IResolvedRoute> {
         return Promise.resolve(
             {
-                method: RestMethods.GET,
+                method: HttpMethod.GET,
                 params: {
                     pathName,
                     method,
@@ -46,7 +45,7 @@ export class DynamicRouteRule implements Route {
     createUrl(
         routeName: string,
         params: Object):
-        Promise<string | boolean> {
+        Promise<string> {
         return null;
     }
 

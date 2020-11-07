@@ -1,6 +1,6 @@
 {
-  "name": "demo-app",
-  "version": "0.0.1",
+  "name": "@typeix/rexxar-starter",
+  "version": "4.0.0",
   "scripts": {
     "compile": "tsc",
     "test": "npm run compile && jest --detectOpenHandles -c jest-runner.json",
@@ -8,18 +8,21 @@
     "start": "npm run demo"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.1",
-    "@types/mu2": "0.0.30",
+    "@types/jest": "^26.0.15",
     "@types/mime": "^2.0.0",
-    "@types/node": "^10.5.4",
-    "jest": "^23.4.2",
-    "ts-jest": "^23.0.1",
-    "tslint": "^5.11.0",
-    "typescript": "^2.9.2"
+    "@types/mu2": "0.0.30",
+    "@types/node": "^12.12.54",
+    "@typescript-eslint/eslint-plugin": "^4.6.0",
+    "@typescript-eslint/eslint-plugin-tslint": "^4.6.0",
+    "@typescript-eslint/parser": "^4.6.0",
+    "eslint": "^7.7.0",
+    "jest": "^26.6.1",
+    "ts-jest": "^26.4.3",
+    "typescript": "^4.0.5"
   },
   "dependencies": {
-    "@typeix/rexxar": "^1.2.0",
-    "mime": "^2.3.1",
+    "@typeix/rexxar": "^4.0.3",
+    "mime": "^2.4.5",
     "mu2": "^0.5.21"
   }
 }

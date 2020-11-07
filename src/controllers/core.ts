@@ -7,7 +7,7 @@ import {
   Param,
   Request,
   ErrorMessage,
-  ServerError, StatusCodes
+  RouterError
 } from "@typeix/rexxar";
 import {getType} from "mime";
 /**
@@ -34,22 +34,20 @@ export class CoreController {
    * @description
    * Custom asset loader service
    */
-  @Inject(Assets)
-  assetLoader: Assets;
+  @Inject() assetLoader: Assets;
   /**
    * @param {Request} request
    * @description
    * ControllerResolver reflection
    */
-  @Inject(Request)
-  request: Request;
+  @Inject() request: Request;
   /**
    * @param {HttpError} message
    * @description
    * Error route handler
    */
   @Action("error")
-  actionError(@ErrorMessage error: ServerError) {
+  actionError(@ErrorMessage() error: RouterError) {
     return "ERROR -> " + error.getCode() + " : " + error.getMessage();
   }
 
@@ -60,7 +58,7 @@ export class CoreController {
    */
   @Action("fire")
   actionFireError() {
-    throw new ServerError(500, "ERROR FIRE");
+    throw new RouterError(500, "ERROR FIRE", {});
   }
   /**
    * @function
@@ -102,7 +100,7 @@ export class CoreController {
   @Action("not_found")
   @Produces("application/json")
   dynamicRouterExample(): string {
-    this.request.setStatusCode(StatusCodes.Not_Found);
+    this.request.setStatusCode(404);
     let params = {
       message: "NOT FOUND WITH DYNAMIC ROUTER EXAMPLE",
       params: this.request.getParams()

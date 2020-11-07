@@ -1,5 +1,6 @@
+import {Inject, Action, Controller, Request, Chain, BeforeEach, Param, Router} from "@typeix/rexxar";
+
 import {Assets} from "../components/assets";
-import {Inject, Action, Controller, Request, Chain, BeforeEach, Param, Router, StatusCodes} from "@typeix/rexxar";
 import {Cache} from "../filters/cache";
 import {CoreController} from "./core";
 import {TemplateEngine} from "../components/mu2";
@@ -28,30 +29,26 @@ export class HomeController extends CoreController {
    * @description
    * Custom asset loader service
    */
-  @Inject(Assets)
-  assetLoader: Assets;
+  @Inject() assetLoader: Assets;
   /**
    * @param {Request} request
    * @description
    * ControllerResolver reflection
    */
-  @Inject(Request)
-  request: Request;
+  @Inject() request: Request;
 
   /**
    * @param {Router} router
    * @description
    * Router reflection
    */
-  @Inject(Router)
-  router: Router;
+  @Inject() router: Router;
   /**
    * @param {TemplateEngine} engine
    * @description
    * Inject template engine
    */
-  @Inject(TemplateEngine)
-  engine: TemplateEngine;
+  @Inject() engine: TemplateEngine;
 
   /**
    * @function
@@ -63,7 +60,7 @@ export class HomeController extends CoreController {
   @Action("redirect")
   async redirect() {
     let url = await this.router.createUrl("home/index", {});
-    return this.request.redirectTo(url, StatusCodes.Temporary_Redirect);
+    return this.request.redirectTo(url, 307);
   }
 
   /**
@@ -77,7 +74,7 @@ export class HomeController extends CoreController {
   @Action("id")
   actionId(
       @Param("id") id: number,
-      @Chain data: string,
+      @Chain() data: string,
       @Param("name") name: string): Promise<string> {
     return this.engine.compileAndRender("home_id", {
       data,
@@ -98,8 +95,8 @@ export class HomeController extends CoreController {
    * Chain can be stopped at any level, chains are not required to be implemented !
    * Frameworks only search for \@Action("name")
    */
-  @BeforeEach
-  beforeEachAction(@Chain data: string): string {
+  @BeforeEach()
+  beforeEachAction(@Chain() data: string): string {
     return "Before each core <- " + data;
   }
   /**
@@ -114,7 +111,7 @@ export class HomeController extends CoreController {
    * Frameworks only search for \@Action("name")
    */
   @Action("index")
-  beforeIndex(@Chain data: string): Promise<string> {
+  beforeIndex(@Chain() data: string): Promise<string> {
     return this.engine.compileAndRender("home_id", {
       data,
       id: "NO_ID",

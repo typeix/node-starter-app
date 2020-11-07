@@ -17,24 +17,21 @@ export class Cache implements IFilter {
    * @description
    * Logger
    */
-  @Inject(Logger)
-  logger: Logger;
+  @Inject() logger: Logger;
 
   /**
    * @param {Request} request
    * @description
    * ControllerResolver reflection
    */
-  @Inject(Request)
-  request: Request;
+  @Inject() request: Request;
 
   /**
    * @param {InMemoryCache} cacheProvider
    * @description
    * InMemoryCache
    */
-  @Inject(InMemoryCache)
-  cacheProvider: InMemoryCache;
+  @Inject() cacheProvider: InMemoryCache;
 
   /**
    * @function

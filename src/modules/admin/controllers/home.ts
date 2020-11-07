@@ -1,4 +1,4 @@
-import {Inject, Action, Controller, Request, Before, Chain, BeforeEach, ServerError, ErrorMessage} from "@typeix/rexxar";
+import {Inject, Action, Controller, Request, Before, Chain, BeforeEach, RouterError, ErrorMessage} from "@typeix/rexxar";
 
 /**
  * Controller example
@@ -23,29 +23,29 @@ export class HomeController {
    * @description
    * ControllerResolver reflection
    */
-  @Inject(Request)
-  request: Request;
+  @Inject() request: Request;
 
 
   /**
-   * @param {HttpError} message
+   * @param {RouterError} error
    * @description
    * Error route handler
    */
   @Action("error")
-  actionError(@ErrorMessage error: ServerError) {
+  actionError(@ErrorMessage() error: RouterError) {
+    this.request.setStatusCode(error.getCode());
     return "ADMIN -> ERROR -> " + error.getCode() + " : " + error.getMessage();
   }
 
 
   /**
-   * @param {HttpError} message
+   * @param {RouterError}
    * @description
    * Error route handler
    */
   @Action("fire")
   actionFireError() {
-    throw new ServerError(500, "ERROR FIRE");
+    throw new RouterError(500, "ERROR FIRE", {});
   }
 
   /**
@@ -63,7 +63,7 @@ export class HomeController {
    *
    */
   @Action("index")
-  actionIndex(@Chain data: string): string {
+  actionIndex(@Chain() data: string): string {
     return `Action index: admin module <-` + data;
   }
 
@@ -75,8 +75,8 @@ export class HomeController {
    * before each
    *
    */
-  @BeforeEach
-  beforeEachAction(@Chain data: string): string {
+  @BeforeEach()
+  beforeEachAction(@Chain() data: string): string {
     return "Before each admin module <- " + data;
   }
 
@@ -95,7 +95,7 @@ export class HomeController {
    *
    */
   @Before("index")
-  beforeIndex(@Chain data: string): string {
+  beforeIndex(@Chain() data: string): string {
     return "Before index admin module: <- " + data;
   }
 

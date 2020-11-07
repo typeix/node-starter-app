@@ -1,4 +1,15 @@
-import {Module, Logger, Inject, IAfterConstruct, Router, RestMethods} from "@typeix/rexxar";
+import {
+  Module,
+  Inject,
+  IAfterConstruct,
+  Router,
+  HttpMethod,
+  Logger,
+  BeforeEach,
+  Before,
+  Action,
+  After, AfterEach
+} from "@typeix/rexxar";
 import {HomeController} from "./controllers/home";
 
 /**
@@ -22,16 +33,14 @@ export class AdminModule implements IAfterConstruct {
      * @description
      * Logger service
      */
-    @Inject(Logger)
-    logger: Logger;
+    @Inject() logger: Logger;
 
     /**
      * @param {Router} router
      * @description
      * Router service
      */
-    @Inject(Router)
-    router: Router;
+    @Inject() router: Router;
 
     /**
      * @function
@@ -46,12 +55,12 @@ export class AdminModule implements IAfterConstruct {
         this.logger.info("Admin module", this);
         this.router.addRules([
             {
-                methods: [RestMethods.GET],
+                methods: [HttpMethod.GET],
                 route: "admin/home/index",
                 url: "/admin"
             },
             {
-                methods: [RestMethods.GET],
+                methods: [HttpMethod.GET],
                 route: "admin/home/error",
                 url: "/admin/throw-error"
             }
