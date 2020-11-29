@@ -1,27 +1,31 @@
 {
   "name": "@typeix/rexxar-starter",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "scripts": {
     "compile": "tsc",
-    "test": "npm run compile && jest --detectOpenHandles -c jest-runner.json",
-    "demo": "npm run compile && node build/bootstrap.js",
-    "start": "npm run demo"
+    "pretest": "tsc",
+    "test": "jest -c jest-runner.json",
+    "debug": "node --inspect ./node_modules/.bin/jest -c jest-runner.json",
+    "lint": "eslint src/**/*.ts",
+    "format": "eslint src/**/*.ts --fix",
+    "prestart": "tsc",
+    "start": "node build/bootstrap.js"
   },
   "devDependencies": {
     "@types/jest": "^26.0.15",
     "@types/mime": "^2.0.0",
     "@types/mu2": "0.0.30",
-    "@types/node": "^12.12.54",
-    "@typescript-eslint/eslint-plugin": "^4.6.0",
-    "@typescript-eslint/eslint-plugin-tslint": "^4.6.0",
-    "@typescript-eslint/parser": "^4.6.0",
-    "eslint": "^7.7.0",
-    "jest": "^26.6.1",
-    "ts-jest": "^26.4.3",
-    "typescript": "^4.0.5"
+    "@types/node": "^12.19.7",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/eslint-plugin-tslint": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
+    "eslint": "^7.14.0",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.4.4",
+    "typescript": "^4.1.2"
   },
   "dependencies": {
-    "@typeix/rexxar": "^4.0.3",
+    "@typeix/rexxar": "^5.0.0",
     "mime": "^2.4.5",
     "mu2": "^0.5.21"
   }
