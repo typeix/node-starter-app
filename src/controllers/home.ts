@@ -20,7 +20,7 @@ import {TemplateEngine} from "../components/mu2";
  */
 @Controller({
   name: "home",
-  filters: [Cache]
+  filters: [ Cache ]
 })
 export class HomeController extends CoreController {
 
@@ -72,10 +72,9 @@ export class HomeController extends CoreController {
    *
    */
   @Action("id")
-  actionId(
-      @Param("id") id: number,
-      @Chain() data: string,
-      @Param("name") name: string): Promise<string> {
+  actionId(@Param("id") id: number,
+    @Chain() data: string,
+    @Param("name") name: string): Promise<string> {
     return this.engine.compileAndRender("home_id", {
       data,
       id,
@@ -99,6 +98,7 @@ export class HomeController extends CoreController {
   beforeEachAction(@Chain() data: string): string {
     return "Before each core <- " + data;
   }
+
   /**
    * @function
    * @name beforeIndex

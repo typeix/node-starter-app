@@ -27,18 +27,18 @@ import {DynamicRouteRule} from "./components/dynamic-router";
  * \@Module is used to define application entry point class
  */
 @RootModule({
-  imports: [AdminModule], // bootstrap in recursive top level order
-  controllers: [HomeController, CoreController], // no order
-  providers: [Assets, TemplateEngine, InMemoryCache],
+  imports: [ AdminModule ], // bootstrap in recursive top level order
+  controllers: [ HomeController, CoreController ], // no order
+  providers: [ Assets, TemplateEngine, InMemoryCache ],
   shared_providers: [
     {
       provide: Logger,
-      useFactory: () => new Logger(Logger.defaultConfig('info'))
+      useFactory: () => new Logger(Logger.defaultConfig("info"))
     },
     {
       provide: Router,
       useClass: Router,
-      providers: [Logger, InMemoryCache]
+      providers: [ Logger, InMemoryCache ]
     }
   ]
 })
@@ -77,37 +77,37 @@ export class Application implements IAfterConstruct {
 
     this.router.addRules([
       {
-        methods: [HttpMethod.GET],
+        methods: [ HttpMethod.GET ],
         route: "core/favicon",
         url: "/favicon.ico"
       },
       {
-        methods: [HttpMethod.GET],
+        methods: [ HttpMethod.GET ],
         route: "core/assets",
         url: "/assets/<file:(.*)>"
       },
       {
-        methods: [HttpMethod.GET],
+        methods: [ HttpMethod.GET ],
         route: "home/id",
         url: "/<id:(\\d+)>/<name:(\\w+)>"
       },
       {
-        methods: [HttpMethod.GET],
+        methods: [ HttpMethod.GET ],
         route: "home/id",
         url: "/<id:(\\d+)>"
       },
       {
-        methods: [HttpMethod.GET],
+        methods: [ HttpMethod.GET ],
         route: "home/index",
         url: "/"
       },
       {
-        methods: [HttpMethod.GET],
+        methods: [ HttpMethod.GET ],
         route: "home/redirect",
         url: "/redirect-to-home"
       },
       {
-        methods: [HttpMethod.GET],
+        methods: [ HttpMethod.GET ],
         route: "core/error",
         url: "/throw-error"
       }

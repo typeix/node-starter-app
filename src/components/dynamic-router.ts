@@ -13,40 +13,43 @@ import {InMemoryCache} from "./in-memory-cache";
 @Injectable()
 export class DynamicRouteRule implements Route {
 
-    @Inject() cache: InMemoryCache;
+  @Inject() cache: InMemoryCache;
 
-    /**
-     * Dynamic parse request example
-     * @param pathName
-     * @param method
-     * @param headers
-     * @returns {Promise<{method: HttpMethod, params: {}, route: string}>}
-     */
-    parseRequest(pathName: string, method: string, headers: { [key: string]: any; }): Promise<IResolvedRoute> {
-        return Promise.resolve(
-            {
-                method: HttpMethod.GET,
-                params: {
-                    pathName,
-                    method,
-                    headers
-                },
-                route: "core/not_found"
-            }
-        );
-    }
+  /**
+   * Dynamic parse request example
+   * @param pathName
+   * @param method
+   * @param headers
+   * @returns {Promise<{method: HttpMethod, params: {}, route: string}>}
+   */
+  parseRequest(pathName: string, method: string, headers: { [key: string]: any }): Promise<IResolvedRoute> {
+    return Promise.resolve(
+      {
+        headers,
+        method: HttpMethod.GET,
+        params: {
+          pathName,
+          method,
+          headers
+        },
+        route: "core/not_found"
+      }
+    );
+  }
 
-    /**
-     * Create url pattern
-     * @param routeName
-     * @param params
-     * @returns {undefined}
-     */
-    createUrl(
-        routeName: string,
-        params: Object):
-        Promise<string> {
-        return null;
-    }
+  /**
+   * Create url pattern
+   * @param routeName
+   * @param params
+   * @returns {undefined}
+   */
+  createUrl(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    routeName: string,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    params: Object):
+    Promise<string> {
+    return null;
+  }
 
 }

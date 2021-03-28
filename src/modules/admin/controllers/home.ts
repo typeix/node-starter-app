@@ -64,7 +64,7 @@ export class HomeController {
    */
   @Action("index")
   actionIndex(@Chain() data: string): string {
-    return `Action index: admin module <-` + data;
+    return "Action index: admin module <-" + data;
   }
 
   /**
