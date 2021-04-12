@@ -1,4 +1,4 @@
-import {Inject, Action, Controller, Request, Chain, BeforeEach, Param, Router} from "@typeix/rexxar";
+import {Inject, Controller, GET, PathParam} from "@typeix/resty";
 
 import {Assets} from "../components/assets";
 import {Cache} from "../filters/cache";
@@ -19,64 +19,18 @@ import {TemplateEngine} from "../components/mu2";
  * Controllers can be Inherited by thy don't necessary need's to be inherited
  */
 @Controller({
-  name: "home",
-  filters: [ Cache ]
+  path: "/",
+  interceptors: [ Cache ]
 })
 export class HomeController extends CoreController {
 
-  /**
-   * @param {Assets} assetLoader
-   * @description
-   * Custom asset loader service
-   */
   @Inject() assetLoader: Assets;
-  /**
-   * @param {Request} request
-   * @description
-   * ControllerResolver reflection
-   */
-  @Inject() request: Request;
-
-  /**
-   * @param {Router} router
-   * @description
-   * Router reflection
-   */
-  @Inject() router: Router;
-  /**
-   * @param {TemplateEngine} engine
-   * @description
-   * Inject template engine
-   */
   @Inject() engine: TemplateEngine;
 
-  /**
-   * @function
-   * @name redirect
-   *
-   * @description
-   * Redirection example
-   */
-  @Action("redirect")
-  async redirect() {
-    let url = await this.router.createUrl("home/index", {});
-    return this.request.redirectTo(url, 307);
-  }
 
-  /**
-   * @function
-   * @name actionId
-   *
-   * @description
-   * There is no naming convention of function names only what is required to define action is \@Action metadata
-   *
-   */
-  @Action("id")
-  actionId(@Param("id") id: number,
-    @Chain() data: string,
-    @Param("name") name: string): Promise<string> {
+  @GET("<id>/<name>")
+  actionId(@PathParam("id") id: number, @PathParam("name") name: string) {
     return this.engine.compileAndRender("home_id", {
-      data,
       id,
       name,
       title: "Template engine with typeix"
@@ -84,40 +38,14 @@ export class HomeController extends CoreController {
   }
 
   /**
-   * @function
-   * @name BeforeEach
-   *
-   * @description
-   * before each action chain, action chains in following order if annotations are pressent
-   *
-   * \@FiltersInOrderBefore -> \@BeforeEach -> \@Before(action) -> \@Action(action) -> \@After(action) -> \@AfterEach -> \@FiltersInOrderAfter
-   * Chain can be stopped at any level, chains are not required to be implemented !
-   * Frameworks only search for \@Action("name")
+   * Rendering Template
    */
-  @BeforeEach()
-  beforeEachAction(@Chain() data: string): string {
-    return "Before each core <- " + data;
-  }
-
-  /**
-   * @function
-   * @name beforeIndex
-   *
-   * @description
-   * Before index action chain
-   *
-   * \@FiltersInOrderBefore -> \@BeforeEach -> \@Before(action) -> \@Action(action) -> \@After(action) -> \@AfterEach -> \@FiltersInOrderAfter
-   * Chain can be stopped at any level, chains are not required to be implemented !
-   * Frameworks only search for \@Action("name")
-   */
-  @Action("index")
-  beforeIndex(@Chain() data: string): Promise<string> {
+  @GET()
+  actionIndex() {
     return this.engine.compileAndRender("home_id", {
-      data,
       id: "NO_ID",
       name: "this is home page",
       title: "Home page example"
     });
   }
-
 }

@@ -1,4 +1,4 @@
-import {Injectable} from "@typeix/rexxar";
+import {Injectable} from "@typeix/resty";
 /**
  * Asset loader service
  * @constructor

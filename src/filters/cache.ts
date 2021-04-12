@@ -1,5 +1,6 @@
-import {IFilter, Filter, Request, Inject, Logger} from "@typeix/rexxar";
 import {InMemoryCache} from "../components/in-memory-cache";
+import {RequestInterceptor, IRequestInterceptor, Inject, Logger, IResolvedRoute, ResolvedRoute} from "@typeix/resty";
+import {ServerResponse} from "http";
 
 /**
  * @constructor
@@ -9,55 +10,17 @@ import {InMemoryCache} from "../components/in-memory-cache";
  * @description
  * Cache filter example
  */
-@Filter(100)
-export class Cache implements IFilter {
+@RequestInterceptor(100)
+export class Cache implements IRequestInterceptor {
 
-  /**
-   * @param {Logger} logger
-   * @description
-   * Logger
-   */
   @Inject() logger: Logger;
-
-  /**
-   * @param {Request} request
-   * @description
-   * ControllerResolver reflection
-   */
-  @Inject() request: Request;
-
-  /**
-   * @param {InMemoryCache} cacheProvider
-   * @description
-   * InMemoryCache
-   */
   @Inject() cacheProvider: InMemoryCache;
+  @Inject() response: ServerResponse;
+  @ResolvedRoute() route: IResolvedRoute;
 
-  /**
-   * @function
-   * @name Cache#before
-   *
-   * @description
-   * Before each controller
-   */
-  before(data: string): string|Buffer|Promise<string|Buffer> {
-    if (this.cacheProvider.has(this.request.getRoute())) {
-      this.request.stopChain();
-      return this.cacheProvider.get(this.request.getRoute());
+  async onRequest() {
+    if (await this.cacheProvider.has(this.route.url)) {
+      this.response.end(this.cacheProvider.get(this.route.url));
     }
-    return "Before cache controller filter <-" + data;
   }
-  /**
-   * @function
-   * @name Cache#before
-   *
-   * @description
-   * Before each controller apply this filter
-   */
-  after(data: string): string|Buffer|Promise<string|Buffer> {
-    this.cacheProvider.set(this.request.getRoute(), data, 10); // 10 seconds cache
-    this.logger.warn("TRIGGER CACHE", data);
-    return data;
-  }
-
 }

@@ -1,6 +1,6 @@
 {
-  "name": "@typeix/rexxar-starter",
-  "version": "5.0.0",
+  "name": "@typeix/resty-starter",
+  "version": "7.0.0",
   "scripts": {
     "compile": "tsc",
     "pretest": "tsc",
@@ -25,7 +25,7 @@
     "typescript": "^4.2.3"
   },
   "dependencies": {
-    "@typeix/rexxar": "^5.1.0",
+    "@typeix/resty": "^6.0.5",
     "mime": "^2.5.2",
     "mu2": "^0.5.21"
   }

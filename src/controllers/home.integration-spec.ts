@@ -1,4 +1,4 @@
-import {fakeHttpServer} from "@typeix/rexxar";
+import {fakeHttpServer} from "@typeix/resty";
 import {Application} from "../application";
 
 
@@ -13,7 +13,7 @@ describe("Home controller", () => {
 
   test("Should test index action", (done) => {
     fakeHttpServer(Application).GET("/").then(data => {
-      expect(data.getBody()).toEqual(template("Home page example", "this is home page", "NO_ID"));
+      expect(data.getBody().toString()).toEqual(template("Home page example", "this is home page", "NO_ID"));
       done();
     }).catch(done);
   });
@@ -21,7 +21,7 @@ describe("Home controller", () => {
 
   test("Should test home id action", (done) => {
     fakeHttpServer(Application).GET("/100/whatevericansee").then(data => {
-      expect(data.getBody()).toEqual(template("Template engine with typeix", "whatevericansee", "100"));
+      expect(data.getBody().toString()).toEqual(template("Template engine with typeix", "whatevericansee", "100"));
       done();
     }).catch(done);
   });

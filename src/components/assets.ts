@@ -1,6 +1,6 @@
 import {readFile} from "fs";
 import {normalize} from "path";
-import {isDefined, Injectable} from "@typeix/rexxar";
+import {isDefined, Injectable} from "@typeix/resty";
 /**
  * Asset loader service
  * @constructor

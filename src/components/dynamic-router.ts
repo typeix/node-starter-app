@@ -1,6 +1,20 @@
-import {Route, Injectable, IResolvedRoute, Inject, HttpMethod} from "@typeix/rexxar";
+import {
+  IRoute,
+  Injectable,
+  IResolvedRoute,
+  Inject,
+  createRouteHandler,
+  createRouteDefinition
+} from "@typeix/resty";
 import {InMemoryCache} from "./in-memory-cache";
+import {HomeController} from "../controllers/home";
 
+const handler = createRouteHandler(
+  createRouteDefinition(
+    "GET",
+    HomeController
+  )
+);
 /**
  * Dynamic route rule
  * @constructor
@@ -11,7 +25,7 @@ import {InMemoryCache} from "./in-memory-cache";
  * Here we can define dynamic route rule which has to implement Route
  */
 @Injectable()
-export class DynamicRouteRule implements Route {
+export class DynamicRouteRule implements IRoute {
 
   @Inject() cache: InMemoryCache;
 
@@ -20,35 +34,18 @@ export class DynamicRouteRule implements Route {
    * @param pathName
    * @param method
    * @param headers
-   * @returns {Promise<{method: HttpMethod, params: {}, route: string}>}
+   * @returns {Promise<{method: string, params: {}, route: string}>}
    */
-  parseRequest(pathName: string, method: string, headers: { [key: string]: any }): Promise<IResolvedRoute> {
-    return Promise.resolve(
-      {
-        headers,
-        method: HttpMethod.GET,
-        params: {
-          pathName,
-          method,
-          headers
-        },
-        route: "core/not_found"
-      }
-    );
-  }
-
-  /**
-   * Create url pattern
-   * @param routeName
-   * @param params
-   * @returns {undefined}
-   */
-  createUrl(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    routeName: string,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    params: Object):
-    Promise<string> {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async parseRequest(pathName: string, method: string, headers: { [key: string]: any }): Promise<IResolvedRoute> {
+    if (/\/dynamic(.*)/.test(pathName) && method === "GET") {
+      return {
+        method,
+        params: {},
+        url: pathName,
+        handler
+      };
+    }
     return null;
   }
 

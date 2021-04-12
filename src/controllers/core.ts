@@ -2,14 +2,10 @@ import {Assets} from "../components/assets";
 import {
   Inject,
   Produces,
-  Action,
-  Controller,
-  Param,
-  Request,
-  ErrorMessage,
-  RouterError
-} from "@typeix/rexxar";
+  Controller, GET, PathParam
+} from "@typeix/resty";
 import {getType} from "mime";
+import {ServerResponse} from "http";
 /**
  * Controller example
  * @constructor
@@ -24,42 +20,13 @@ import {getType} from "mime";
  * Controllers can be Inherited by thy don't necessary need's to be inherited
  */
 @Controller({
-  name: "core",
+  path: "/",
   providers: [] // type of local instances within new request since controller is instanciated on each request
 })
 export class CoreController {
 
-  /**
-   * @param {Assets} assetLoader
-   * @description
-   * Custom asset loader service
-   */
   @Inject() assetLoader: Assets;
-  /**
-   * @param {Request} request
-   * @description
-   * ControllerResolver reflection
-   */
-  @Inject() request: Request;
-  /**
-   * @param {HttpError} message
-   * @description
-   * Error route handler
-   */
-  @Action("error")
-  actionError(@ErrorMessage() error: RouterError) {
-    return "ERROR -> " + error.getCode() + " : " + error.getMessage();
-  }
-
-  /**
-   * @param {HttpError} message
-   * @description
-   * Error route handler
-   */
-  @Action("fire")
-  actionFireError() {
-    throw new RouterError(500, "ERROR FIRE", {});
-  }
+  @Inject() response: ServerResponse;
   /**
    * @function
    * @name fileLoadAction
@@ -69,8 +36,8 @@ export class CoreController {
    * \@Produces("image/x-icon") -> content type header
    */
   @Produces("image/x-icon")
-  @Action("favicon")
-  faviconLoader(): Promise<Buffer> {
+  @GET("favicon.ico")
+  faviconLoader() {
     return this.fileLoadAction("favicon.ico");
   }
 
@@ -82,30 +49,12 @@ export class CoreController {
    * This action loads file from disk
    *
    */
-  @Action("assets")
-  fileLoadAction(@Param("file") file: string): Promise<Buffer> {
-    let type = getType(Assets.publicPath(file));
-    this.request.setContentType(type);
-    return this.assetLoader.load(file);
+  @GET("assets")
+  async fileLoadAction(@PathParam("file") file: string) {
+    const type = getType(Assets.publicPath(file));
+    const loadedFile: Buffer = await this.assetLoader.load(file);
+    this.response.setHeader("Content-Type", type);
+    this.response.setHeader("Content-Length", loadedFile.length);
+    return loadedFile;
   }
-
-
-  /**
-   * @function
-   * @name dynamicRouterExample
-   *
-   * @description
-   * Dynamic router example
-   */
-  @Action("not_found")
-  @Produces("application/json")
-  dynamicRouterExample(): string {
-    this.request.setStatusCode(404);
-    let params = {
-      message: "NOT FOUND WITH DYNAMIC ROUTER EXAMPLE",
-      params: this.request.getParams()
-    };
-    return JSON.stringify(params);
-  }
-
 }

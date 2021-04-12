@@ -1,14 +1,10 @@
 import {
   IAfterConstruct,
   Inject,
-  HttpMethod,
   Router,
   RootModule,
-  Logger,
-  BeforeEach,
-  Before,
-  Action, After, AfterEach
-} from "@typeix/rexxar";
+  Logger, Injector, verifyProvider
+} from "@typeix/resty";
 import {Assets} from "./components/assets";
 import {CoreController} from "./controllers/core";
 import {HomeController} from "./controllers/home";
@@ -27,9 +23,9 @@ import {DynamicRouteRule} from "./components/dynamic-router";
  * \@Module is used to define application entry point class
  */
 @RootModule({
-  imports: [ AdminModule ], // bootstrap in recursive top level order
-  controllers: [ HomeController, CoreController ], // no order
-  providers: [ Assets, TemplateEngine, InMemoryCache ],
+  imports: [AdminModule], // bootstrap in recursive top level order
+  controllers: [HomeController, CoreController], // no order
+  providers: [Assets, TemplateEngine],
   shared_providers: [
     {
       provide: Logger,
@@ -38,31 +34,12 @@ import {DynamicRouteRule} from "./components/dynamic-router";
     {
       provide: Router,
       useClass: Router,
-      providers: [ Logger, InMemoryCache ]
+      providers: [InMemoryCache]
     }
   ]
 })
 export class Application implements IAfterConstruct {
 
-  /**
-   * @param {Assets} assetLoader
-   * @description
-   * Custom asset loader service
-   */
-  @Inject() assetLoader: Assets;
-
-  /**
-   * @param {Logger} logger
-   * @description
-   * Logger service
-   */
-  @Inject() logger: Logger;
-
-  /**
-   * @param {Router} router
-   * @description
-   * Router service
-   */
   @Inject() router: Router;
 
   /**
@@ -74,46 +51,6 @@ export class Application implements IAfterConstruct {
    * Defining main route, all routes are processed
    */
   afterConstruct() {
-
-    this.router.addRules([
-      {
-        methods: [ HttpMethod.GET ],
-        route: "core/favicon",
-        url: "/favicon.ico"
-      },
-      {
-        methods: [ HttpMethod.GET ],
-        route: "core/assets",
-        url: "/assets/<file:(.*)>"
-      },
-      {
-        methods: [ HttpMethod.GET ],
-        route: "home/id",
-        url: "/<id:(\\d+)>/<name:(\\w+)>"
-      },
-      {
-        methods: [ HttpMethod.GET ],
-        route: "home/id",
-        url: "/<id:(\\d+)>"
-      },
-      {
-        methods: [ HttpMethod.GET ],
-        route: "home/index",
-        url: "/"
-      },
-      {
-        methods: [ HttpMethod.GET ],
-        route: "home/redirect",
-        url: "/redirect-to-home"
-      },
-      {
-        methods: [ HttpMethod.GET ],
-        route: "core/error",
-        url: "/throw-error"
-      }
-    ]);
-
     this.router.addRule(DynamicRouteRule);
-    this.router.setError("core/error");
   }
 }

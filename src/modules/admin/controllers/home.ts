@@ -1,4 +1,5 @@
-import {Inject, Action, Controller, Request, Before, Chain, BeforeEach, RouterError, ErrorMessage} from "@typeix/rexxar";
+import {Controller, GET, Inject, OnError, RouterError} from "@typeix/resty";
+import {ServerResponse} from "http";
 
 /**
  * Controller example
@@ -12,91 +13,44 @@ import {Inject, Action, Controller, Request, Before, Chain, BeforeEach, RouterEr
  * as local instance as providers to this controllers
  */
 @Controller({
-  name: "home",
+  path: "/",
   providers: [] // type of local instances within new request since controller is instanciated on each request
 })
 export class HomeController {
 
+  @Inject() response: ServerResponse;
 
   /**
-   * @param {Request} request
-   * @description
-   * ControllerResolver reflection
+   * Error Handler pattern that matches all errors in this controller
+   * @param error
    */
-  @Inject() request: Request;
-
-
-  /**
-   * @param {RouterError} error
-   * @description
-   * Error route handler
-   */
-  @Action("error")
-  actionError(@ErrorMessage() error: RouterError) {
-    this.request.setStatusCode(error.getCode());
+  @OnError("*")
+  actionError(@Inject() error: RouterError) {
     return "ADMIN -> ERROR -> " + error.getCode() + " : " + error.getMessage();
   }
 
-
   /**
-   * @param {RouterError}
-   * @description
-   * Error route handler
+   * Manually simulate error which is forwarded to previous route
    */
-  @Action("fire")
-  actionFireError() {
-    throw new RouterError(500, "ERROR FIRE", {});
+  @GET("fire")
+  actionThrowError() {
+    throw new RouterError("ERROR FIRE", 500);
   }
 
   /**
-   * @function
-   * @name actionIndex
-   *
-   * @description
-   * There is no naming convention of function names only what is required to define action is \@Action metadata
-   *
-   * @example
-   * \@Action("index")
-   *  iIgnoreNamingConvention(): string {
-   *    return "Only important fact is a \@Action param";
-   * }
-   *
+   * Manually simulate error which is forwarded to previous route
    */
-  @Action("index")
-  actionIndex(@Chain() data: string): string {
-    return "Action index: admin module <-" + data;
+  @GET("throw")
+  actionThrowSecondError() {
+    throw new RouterError("ERROR Throw", 500);
   }
 
   /**
-   * @function
-   * @name BeforeEach
-   *
-   * @description
-   * before each
-   *
+   * Admin index action
    */
-  @BeforeEach()
-  beforeEachAction(@Chain() data: string): string {
-    return "Before each admin module <- " + data;
-  }
-
-  /**
-   * @function
-   * @name actionIndex
-   *
-   * @description
-   * There is no naming convention of function names only what is required to define action is \@Action metadata
-   *
-   * @example
-   * \@Action("index")
-   *  iIgnoreNamingConvention(): string {
-   *    return "Only important fact is a \@Action param";
-   * }
-   *
-   */
-  @Before("index")
-  beforeIndex(@Chain() data: string): string {
-    return "Before index admin module: <- " + data;
+  @GET()
+  actionIndex(): string {
+    return "Methods index: admin module";
   }
 
 }
