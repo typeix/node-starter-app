@@ -22,5 +22,5 @@ npm start
 * http://localhost:9000/favicon.ico
 * http://localhost:9000/assets/favicon.ico
 
-[travis-url]: https://travis-ci.org/typeix/resty-starter.svg?branch=master
-[travis-img]: https://travis-ci.org/typeix/resty-starter
+[travis-url]: https://travis-ci.com/typeix/resty-starter.svg?branch=master
+[travis-img]: https://travis-ci.com/typeix/resty-starter
