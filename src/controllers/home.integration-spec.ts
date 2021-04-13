@@ -20,7 +20,7 @@ describe("Home controller", () => {
 
 
   test("Should test home id action", (done) => {
-    fakeHttpServer(Application).GET("/100/whatevericansee").then(data => {
+    fakeHttpServer(Application).GET("/params/100/whatevericansee").then(data => {
       expect(data.getBody().toString()).toEqual(template("Template engine with typeix", "whatevericansee", "100"));
       done();
     }).catch(done);

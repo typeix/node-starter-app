@@ -2,7 +2,6 @@ import {Inject, Controller, GET, PathParam} from "@typeix/resty";
 
 import {Assets} from "../components/assets";
 import {Cache} from "../filters/cache";
-import {CoreController} from "./core";
 import {TemplateEngine} from "../components/mu2";
 
 /**
@@ -20,15 +19,15 @@ import {TemplateEngine} from "../components/mu2";
  */
 @Controller({
   path: "/",
-  interceptors: [ Cache ]
+  interceptors: [Cache]
 })
-export class HomeController extends CoreController {
+export class HomeController {
 
   @Inject() assetLoader: Assets;
   @Inject() engine: TemplateEngine;
 
 
-  @GET("<id>/<name>")
+  @GET("/params/<id:(\\d+)>/<name>")
   actionId(@PathParam("id") id: number, @PathParam("name") name: string) {
     return this.engine.compileAndRender("home_id", {
       id,

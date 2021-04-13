@@ -30,11 +30,11 @@ export class TemplateEngine {
      */
   compileAndRender(template: String, data: any): Promise<Buffer> {
     return new Promise((resolve, reject) => {
-      let buffer = [];
+      let tpl = "";
       compileAndRender(TemplateEngine.getTemplatePath(template), data)
-        .on("data", (chunk) => buffer.push(chunk))
+        .on("data", (chunk) => tpl += chunk)
         .on("error", error => reject(error))
-        .on("end", () => resolve(Buffer.concat(buffer)));
+        .on("end", () => resolve(Buffer.from(tpl)));
     });
   }
 }

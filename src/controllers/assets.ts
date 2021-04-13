@@ -10,7 +10,7 @@ import {ServerResponse} from "http";
  * Controller example
  * @constructor
  * @function
- * @name CoreController
+ * @name AssetsController
  *
  * @description
  * Define controller, assign action and inject your services.
@@ -23,7 +23,7 @@ import {ServerResponse} from "http";
   path: "/",
   providers: [] // type of local instances within new request since controller is instanciated on each request
 })
-export class CoreController {
+export class AssetsController {
 
   @Inject() assetLoader: Assets;
   @Inject() response: ServerResponse;
@@ -49,7 +49,7 @@ export class CoreController {
    * This action loads file from disk
    *
    */
-  @GET("assets")
+  @GET("assets/<file:(.*)>")
   async fileLoadAction(@PathParam("file") file: string) {
     const type = getType(Assets.publicPath(file));
     const loadedFile: Buffer = await this.assetLoader.load(file);

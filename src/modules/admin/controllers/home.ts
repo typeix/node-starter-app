@@ -5,7 +5,7 @@ import {ServerResponse} from "http";
  * Controller example
  * @constructor
  * @function
- * @name HomeController
+ * @name AdminHomeController
  *
  * @description
  * Define controller, assign action and inject your services.
@@ -16,7 +16,7 @@ import {ServerResponse} from "http";
   path: "/",
   providers: [] // type of local instances within new request since controller is instanciated on each request
 })
-export class HomeController {
+export class AdminHomeController {
 
   @Inject() response: ServerResponse;
 
@@ -24,8 +24,8 @@ export class HomeController {
    * Error Handler pattern that matches all errors in this controller
    * @param error
    */
-  @OnError("*")
-  actionError(@Inject() error: RouterError) {
+  @OnError("(.*)")
+  actionError(@Inject(RouterError) error: RouterError) {
     return "ADMIN -> ERROR -> " + error.getCode() + " : " + error.getMessage();
   }
 
@@ -50,7 +50,7 @@ export class HomeController {
    */
   @GET()
   actionIndex(): string {
-    return "Methods index: admin module";
+    return "GET actionIndex: admin module";
   }
 
 }

@@ -1,5 +1,5 @@
 import {Module} from "@typeix/resty";
-import {HomeController} from "./controllers/home";
+import {AdminHomeController} from "./controllers/home";
 
 /**
  * Application entry point
@@ -12,7 +12,7 @@ import {HomeController} from "./controllers/home";
  */
 @Module({
   path: "admin",
-  controllers: [ HomeController ],
+  controllers: [AdminHomeController],
   providers: []
 })
 export class AdminModule {}

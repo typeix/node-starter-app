@@ -3,10 +3,10 @@ import {
   Inject,
   Router,
   RootModule,
-  Logger, Injector, verifyProvider
+  Logger
 } from "@typeix/resty";
 import {Assets} from "./components/assets";
-import {CoreController} from "./controllers/core";
+import {AssetsController} from "./controllers/assets";
 import {HomeController} from "./controllers/home";
 import {AdminModule} from "./modules/admin/admin.module";
 import {TemplateEngine} from "./components/mu2";
@@ -24,8 +24,8 @@ import {DynamicRouteRule} from "./components/dynamic-router";
  */
 @RootModule({
   imports: [AdminModule], // bootstrap in recursive top level order
-  controllers: [HomeController, CoreController], // no order
-  providers: [Assets, TemplateEngine],
+  controllers: [AssetsController, HomeController], // no order
+  providers: [Assets, TemplateEngine, InMemoryCache],
   shared_providers: [
     {
       provide: Logger,
