@@ -5,13 +5,13 @@ import {ServerResponse} from "http";
 /**
  * @constructor
  * @function
- * @name Cache
+ * @name CacheInterceptor
  *
  * @description
  * Cache filter example
  */
 @RequestInterceptor(100)
-export class Cache implements IRequestInterceptor {
+export class CacheInterceptor  implements IRequestInterceptor {
 
   @Inject() logger: Logger;
   @Inject() cacheProvider: InMemoryCache;
@@ -20,7 +20,9 @@ export class Cache implements IRequestInterceptor {
 
   async onRequest() {
     if (await this.cacheProvider.has(this.route.url)) {
-      this.response.end(this.cacheProvider.get(this.route.url));
+      const result = await this.cacheProvider.get(this.route.url);
+      this.response.end(result);
+      return result;
     }
   }
 }

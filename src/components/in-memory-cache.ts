@@ -42,7 +42,7 @@ export class InMemoryCache {
      * @param key
      * @returns {boolean}
      */
-  get(key: string): string | undefined {
+  get(key: string): any {
     return this._cache.get(key);
   }
 
@@ -62,7 +62,7 @@ export class InMemoryCache {
      * @param timeoutInSec
      * @returns {InMemoryCache}
      */
-  set(key: string, value: string, timeoutInSec = 0): this {
+  set(key: string, value: any, timeoutInSec = 0): this {
     if (timeoutInSec > 0) {
       this._timers.set(key, setTimeout(() => this.delete(key), 1000 * timeoutInSec));
     }

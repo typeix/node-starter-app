@@ -7,7 +7,7 @@ import {
   createRouteDefinition
 } from "@typeix/resty";
 import {InMemoryCache} from "./in-memory-cache";
-import {HomeController} from "../controllers/home";
+import {HomeController} from "../controllers/home-controller";
 
 const handler = createRouteHandler(
   createRouteDefinition(

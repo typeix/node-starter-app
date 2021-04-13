@@ -5,13 +5,13 @@ import {isDefined, Injectable} from "@typeix/resty";
  * Asset loader service
  * @constructor
  * @function
- * @name Assets
+ * @name AssetsLoader
  *
  * @description
  * Load assets from disk
  */
 @Injectable()
-export class Assets {
+export class AssetsLoader {
   /**
    * Get public path
    * @return {String}
@@ -30,7 +30,7 @@ export class Assets {
     return await <Promise<Buffer>> new Promise(
       (resolve, reject) =>
         readFile(
-          Assets.publicPath(name),
+          AssetsLoader.publicPath(name),
           (err, data) => isDefined(err) ? reject(err) : resolve(data)
         )
     );

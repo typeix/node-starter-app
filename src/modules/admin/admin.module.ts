@@ -1,5 +1,5 @@
 import {Module} from "@typeix/resty";
-import {AdminHomeController} from "./controllers/home";
+import {AdminHomeController} from "./controllers/admin.home-controller";
 
 /**
  * Application entry point

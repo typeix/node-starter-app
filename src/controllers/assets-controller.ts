@@ -1,4 +1,4 @@
-import {Assets} from "../components/assets";
+import {AssetsLoader} from "../components/assets-loader";
 import {
   Inject,
   Produces,
@@ -25,7 +25,7 @@ import {ServerResponse} from "http";
 })
 export class AssetsController {
 
-  @Inject() assetLoader: Assets;
+  @Inject() assetLoader: AssetsLoader;
   @Inject() response: ServerResponse;
   /**
    * @function
@@ -51,7 +51,7 @@ export class AssetsController {
    */
   @GET("assets/<file:(.*)>")
   async fileLoadAction(@PathParam("file") file: string) {
-    const type = getType(Assets.publicPath(file));
+    const type = getType(AssetsLoader.publicPath(file));
     const loadedFile: Buffer = await this.assetLoader.load(file);
     this.response.setHeader("Content-Type", type);
     this.response.setHeader("Content-Length", loadedFile.length);

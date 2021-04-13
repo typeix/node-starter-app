@@ -5,11 +5,11 @@ import {
   RootModule,
   Logger
 } from "@typeix/resty";
-import {Assets} from "./components/assets";
-import {AssetsController} from "./controllers/assets";
-import {HomeController} from "./controllers/home";
+import {AssetsLoader} from "./components/assets-loader";
+import {AssetsController} from "./controllers/assets-controller";
+import {HomeController} from "./controllers/home-controller";
 import {AdminModule} from "./modules/admin/admin.module";
-import {TemplateEngine} from "./components/mu2";
+import {TemplateEngine} from "./components/templating-engine";
 import {InMemoryCache} from "./components/in-memory-cache";
 import {DynamicRouteRule} from "./components/dynamic-router";
 
@@ -25,7 +25,7 @@ import {DynamicRouteRule} from "./components/dynamic-router";
 @RootModule({
   imports: [AdminModule], // bootstrap in recursive top level order
   controllers: [AssetsController, HomeController], // no order
-  providers: [Assets, TemplateEngine, InMemoryCache],
+  providers: [AssetsLoader, TemplateEngine, InMemoryCache],
   shared_providers: [
     {
       provide: Logger,

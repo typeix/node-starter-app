@@ -28,8 +28,8 @@ export class TemplateEngine {
      * @param data
      * @returns {NodeJS.ReadableStream}
      */
-  compileAndRender(template: String, data: any): Promise<Buffer> {
-    return new Promise((resolve, reject) => {
+  async compileAndRender(template: String, data: any): Promise<Buffer> {
+    return await new Promise((resolve, reject) => {
       let tpl = "";
       compileAndRender(TemplateEngine.getTemplatePath(template), data)
         .on("data", (chunk) => tpl += chunk)
