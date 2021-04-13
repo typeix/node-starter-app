@@ -4,14 +4,18 @@ import {
   IResolvedRoute,
   Inject,
   createRouteHandler,
-  createRouteDefinition
+  createRouteDefinition,
+  GET
 } from "@typeix/resty";
 import {InMemoryCache} from "./in-memory-cache";
 import {HomeController} from "../controllers/home-controller";
 
 const handler = createRouteHandler(
   createRouteDefinition(
-    "GET",
+    {
+      name: "actionIndex",
+      decorator: GET
+    },
     HomeController
   )
 );
