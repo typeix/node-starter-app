@@ -1,5 +1,7 @@
 # @typeix/resty starter application
 
+[![Build Status][travis-url]][travis-img]
+
 This is runnable example, preview of application development with @typeix/resty
 
 ### Running demo:
@@ -11,7 +13,6 @@ npm start
 ```
 
 
-
 ### Implemented routes:
 * http://localhost:9000/
 * http://localhost:9000/admin
@@ -21,5 +22,5 @@ npm start
 * http://localhost:9000/favicon.ico
 * http://localhost:9000/assets/favicon.ico
 
-
-
+[travis-url]: https://travis-ci.org/typeix/resty-starter.svg?branch=master
+[travis-img]: https://travis-ci.org/typeix/resty-starter
