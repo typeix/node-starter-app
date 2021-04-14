@@ -34,7 +34,7 @@ export class AdminHomeController {
    */
   @GET("fire")
   actionThrowError() {
-    throw new RouterError("ERROR FIRE", 500);
+    throw new RouterError("FIRE", 500);
   }
 
   /**
@@ -42,7 +42,7 @@ export class AdminHomeController {
    */
   @GET("throw")
   actionThrowSecondError() {
-    throw new RouterError("ERROR Throw", 500);
+    throw new RouterError("THROW", 500);
   }
 
   /**
