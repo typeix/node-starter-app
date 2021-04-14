@@ -12,6 +12,7 @@ import {AdminModule} from "./modules/admin/admin.module";
 import {TemplateEngine} from "./components/templating-engine";
 import {InMemoryCache} from "./components/in-memory-cache";
 import {DynamicRouteRule} from "./components/dynamic-router";
+import {UrlDataStoreService} from "./components/url-data-store.service";
 
 /**
  * Application entry point
@@ -28,6 +29,7 @@ import {DynamicRouteRule} from "./components/dynamic-router";
   providers: [AssetsLoader, TemplateEngine],
   shared_providers: [
     InMemoryCache,
+    UrlDataStoreService,
     {
       provide: Logger,
       useFactory: () => new Logger(Logger.defaultConfig("info"))

@@ -1,4 +1,4 @@
-# @typeix/resty starter application
+# @typeix/resty web application starter
 
 [![Build Status][travis-url]][travis-img]
 
@@ -21,6 +21,9 @@ npm start
 * http://localhost:9000/params/100/anyparam
 * http://localhost:9000/favicon.ico
 * http://localhost:9000/assets/favicon.ico
+* http://localhost:9000/dynamic
+* http://localhost:9000/dynamic-simulation
+* http://localhost:9000/dynamic-db-simulation
 
 [travis-url]: https://travis-ci.com/typeix/resty-starter.svg?branch=master
 [travis-img]: https://travis-ci.com/typeix/resty-starter

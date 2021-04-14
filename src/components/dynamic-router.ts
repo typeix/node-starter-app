@@ -9,6 +9,7 @@ import {
 } from "@typeix/resty";
 import {InMemoryCache} from "./in-memory-cache";
 import {HomeController} from "../controllers/home-controller";
+import {UrlDataStoreService} from "./url-data-store.service";
 
 const handler = createRouteHandler(
   createRouteDefinition(
@@ -32,6 +33,7 @@ const handler = createRouteHandler(
 export class DynamicRouteRule implements IRoute {
 
   @Inject() cache: InMemoryCache;
+  @Inject() datastore: UrlDataStoreService;
 
   /**
    * Dynamic parse request example
@@ -42,7 +44,7 @@ export class DynamicRouteRule implements IRoute {
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async parseRequest(pathName: string, method: string, headers: { [key: string]: any }): Promise<IResolvedRoute> {
-    if (/\/dynamic(.*)/.test(pathName) && method === "GET") {
+    if (this.datastore.isValid(pathName) && method === "GET") {
       return {
         method,
         params: {},
