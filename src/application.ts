@@ -25,17 +25,14 @@ import {DynamicRouteRule} from "./components/dynamic-router";
 @RootModule({
   imports: [AdminModule], // bootstrap in recursive top level order
   controllers: [AssetsController, HomeController], // no order
-  providers: [AssetsLoader, TemplateEngine, InMemoryCache],
+  providers: [AssetsLoader, TemplateEngine],
   shared_providers: [
+    InMemoryCache,
     {
       provide: Logger,
       useFactory: () => new Logger(Logger.defaultConfig("info"))
     },
-    {
-      provide: Router,
-      useClass: Router,
-      providers: [InMemoryCache]
-    }
+    Router
   ]
 })
 export class Application implements IAfterConstruct {
