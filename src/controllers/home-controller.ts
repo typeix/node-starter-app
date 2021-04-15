@@ -4,6 +4,7 @@ import {AssetsLoader} from "../components/assets-loader";
 import {CacheInterceptor} from "../interceptors/cache";
 import {TemplateEngine} from "../components/templating-engine";
 import {InMemoryCache} from "../components/in-memory-cache";
+import {Template} from "../interceptors/template";
 
 /**
  * Controller example
@@ -30,13 +31,14 @@ export class HomeController {
   @ResolvedRoute() route: IResolvedRoute;
 
 
+  @Template("home_id")
   @GET("/params/<id:(\\d+)>/<name>")
   actionId(@PathParam("id") id: number, @PathParam("name") name: string) {
-    return this.engine.compileAndRender("home_id", {
+    return {
       id,
       name,
       title: "Template engine with typeix"
-    });
+    };
   }
 
   /**
