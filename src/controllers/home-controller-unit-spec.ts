@@ -19,7 +19,7 @@ describe("Home controller", () => {
     set: (key, val) => {}
   };
   let route = {
-    url: "/"
+    path: "/"
   };
 
   beforeAll(() => {
@@ -57,6 +57,6 @@ describe("Home controller", () => {
       name: "this is home page",
       title: "Home page example"
     });
-    expect(cacheSpy).toHaveBeenCalledWith(route.url, "home_id");
+    expect(cacheSpy).toHaveBeenCalledWith(route.path, "home_id");
   });
 });

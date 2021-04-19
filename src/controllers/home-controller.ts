@@ -4,7 +4,7 @@ import {AssetsLoader} from "../components/assets-loader";
 import {CacheInterceptor} from "../interceptors/cache";
 import {TemplateEngine} from "../components/templating-engine";
 import {InMemoryCache} from "../components/in-memory-cache";
-import {Template} from "../interceptors/template";
+import {Render} from "../interceptors/render";
 
 /**
  * Controller example
@@ -31,9 +31,9 @@ export class HomeController {
   @ResolvedRoute() route: IResolvedRoute;
 
 
-  @Template("home_id")
+  @Render("home_id")
   @GET("/params/<id:(\\d+)>/<name>")
-  actionId(@PathParam("id") id: number, @PathParam("name") name: string) {
+  async actionId(@PathParam("id") id: number, @PathParam("name") name: string) {
     return {
       id,
       name,
@@ -51,7 +51,7 @@ export class HomeController {
       name: "this is home page",
       title: "Home page example"
     });
-    this.cache.set(this.route.url, result);
+    this.cache.set(this.route.path, result);
     return result;
   }
 }

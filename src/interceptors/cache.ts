@@ -1,5 +1,5 @@
 import {InMemoryCache} from "../components/in-memory-cache";
-import {Injectable, Interceptor, InterceptedMethod, Inject} from "@typeix/resty";
+import {Injectable, Inject, RequestInterceptor, InterceptedRequest} from "@typeix/resty";
 
 /**
  * @constructor
@@ -10,12 +10,14 @@ import {Injectable, Interceptor, InterceptedMethod, Inject} from "@typeix/resty"
  * Cache filter example
  */
 @Injectable()
-export class CacheInterceptor implements Interceptor {
+export class CacheInterceptor implements RequestInterceptor {
   @Inject() cacheProvider: InMemoryCache;
 
-  async invoke(method: InterceptedMethod): Promise<any> {
-    if (await this.cacheProvider.has(method.route.url)) {
-      return await this.cacheProvider.get(method.route.url);
+  async invoke(method: InterceptedRequest): Promise<any> {
+    if (await this.cacheProvider.has(method.route.path)) {
+      let result = await this.cacheProvider.get(method.route.path);
+      method.response.end(result);
+      return result;
     }
   }
 }

@@ -3,23 +3,12 @@ import {
   Injectable,
   IResolvedRoute,
   Inject,
-  createRouteHandler,
-  createRouteDefinition,
-  GET
+  RouteConfig,
+  IRouteConfig
 } from "@typeix/resty";
 import {InMemoryCache} from "./in-memory-cache";
-import {HomeController} from "../controllers/home-controller";
 import {UrlDataStoreService} from "./url-data-store.service";
 
-const handler = createRouteHandler(
-  createRouteDefinition(
-    {
-      name: "actionIndex",
-      decorator: GET
-    },
-    HomeController
-  )
-);
 /**
  * Dynamic route rule
  * @constructor
@@ -34,22 +23,24 @@ export class DynamicRouteRule implements IRoute {
 
   @Inject() cache: InMemoryCache;
   @Inject() datastore: UrlDataStoreService;
-
+  @RouteConfig() config: IRouteConfig;
   /**
    * Dynamic parse request example
-   * @param pathName
+   * @param uri
    * @param method
    * @param headers
    * @returns {Promise<{method: string, params: {}, route: string}>}
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  async parseRequest(pathName: string, method: string, headers: { [key: string]: any }): Promise<IResolvedRoute> {
-    if (this.datastore.isValid(pathName) && method === "GET") {
+  async parseRequest(uri: URL, method: string, headers: { [key: string]: any }): Promise<IResolvedRoute> {
+    if (this.datastore.isValid(uri.pathname)) {
       return {
         method,
+        headers,
+        url: uri,
         params: {},
-        url: pathName,
-        handler
+        path: uri.pathname,
+        handler: this.config.handler
       };
     }
     return null;
