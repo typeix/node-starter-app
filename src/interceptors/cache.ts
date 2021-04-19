@@ -15,7 +15,9 @@ export class CacheInterceptor implements RequestInterceptor {
 
   async invoke(method: InterceptedRequest): Promise<any> {
     if (await this.cacheProvider.has(method.route.path)) {
-      return await this.cacheProvider.get(method.route.path);
+      const result = await this.cacheProvider.get(method.route.path);
+      method.response.end(result);
+      return result;
     }
   }
 }

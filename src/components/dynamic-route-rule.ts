@@ -33,7 +33,7 @@ export class DynamicRouteRule implements IRoute {
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async parseRequest(uri: URL, method: string, headers: { [key: string]: any }): Promise<IResolvedRoute> {
-    if (this.datastore.isValid(uri.pathname)) {
+    if (await this.datastore.isValid(uri.pathname) && this.config.method === method) {
       return {
         method,
         headers,

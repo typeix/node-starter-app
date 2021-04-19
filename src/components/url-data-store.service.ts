@@ -13,7 +13,7 @@ import {Injectable, inArray} from "@typeix/resty";
 export class UrlDataStoreService {
 
   data: Array<string> = ["/dynamic", "/dynamic-simulation", "/dynamic-db-simulation"]
-  isValid(url: string): boolean {
+  async isValid(url: string): Promise<boolean> {
     return inArray(this.data, url);
   }
 }

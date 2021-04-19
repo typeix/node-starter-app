@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="/favicon.ico" />
-    <meta charset="UTF-8">
-    <title>{{title}}</title>
+  <link rel="icon" type="image/png" href="/favicon.ico"/>
+  <meta charset="UTF-8">
+  <title>{{title}}</title>
 </head>
 <body>
 <h4>Headline: {{name}}</h4>
 <p>
-    Methods id: {{id}} name: {{name}};
+  Methods id: {{id}} name: {{name}};
 </p>
+<p>
+  Current route: {{href}}
+</p>
+<div>
+  <h2>Routes</h2>
+  <ul>
+    <li><a href="/">Home Page</a></li>
+    <li><a href="/dynamic">/dynamic</a></li>
+    <li><a href="/dynamic-simulation">/dynamic-simulation</a></li>
+    <li><a href="/dynamic-db-simulation">/dynamic-simulation</a></li>
+    <li><a href="/admin">/admin</a></li>
+    <li><a href="/admin/throw">/admin/throw</a></li>
+    <li><a href="/admin/fire">/admin/fire</a></li>
+    <li><a href="/favicon.ico">/favicon.ico</a></li>
+  </ul>
+</div>
 </body>
 </html>

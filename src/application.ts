@@ -61,7 +61,7 @@ export class Application implements IAfterConstruct {
       DynamicRouteRule,
       {
         method: "GET",
-        path: "this is ignored in dynamic router",
+        path: "This is ignored in dynamic router",
         handler: createRouteHandler(
           createRouteDefinition(
             {

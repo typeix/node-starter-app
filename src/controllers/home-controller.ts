@@ -37,7 +37,8 @@ export class HomeController {
     return {
       id,
       name,
-      title: "Template engine with typeix"
+      title: "Template engine with typeix",
+      href: this.route.url.href
     };
   }
 
@@ -49,7 +50,8 @@ export class HomeController {
     const result = await this.engine.compileAndRender("home_id", {
       id: "NO_ID",
       name: "this is home page",
-      title: "Home page example"
+      title: "Home page example",
+      href: this.route.url.href
     });
     this.cache.set(this.route.path, result);
     return result;
