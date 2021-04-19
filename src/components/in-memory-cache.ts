@@ -1,12 +1,11 @@
 import {Injectable} from "@typeix/resty";
 /**
- * Asset loader service
  * @constructor
  * @function
- * @name Assets
+ * @name InMemoryCache
  *
  * @description
- * Load assets from disk
+ * This is just an caching provider example, usually this should be Redis, Memcached etc. provider
  */
 @Injectable()
 export class InMemoryCache {

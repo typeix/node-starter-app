@@ -25,7 +25,7 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
-    "@typeix/resty": "^7.0.2",
+    "@typeix/resty": "^7.0.3",
     "mime": "^2.5.2",
     "mu2": "^0.5.21"
   },

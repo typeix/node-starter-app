@@ -1,10 +1,9 @@
 import {Inject, Controller, GET, PathParam, ResolvedRoute, IResolvedRoute} from "@typeix/resty";
 
-import {AssetsLoader} from "../components/assets-loader";
-import {CacheInterceptor} from "../interceptors/cache";
 import {TemplateEngine} from "../components/templating-engine";
-import {InMemoryCache} from "../components/in-memory-cache";
-import {Render} from "../interceptors/render";
+import {CacheInterceptor} from "../components/interceptors/cache";
+import {Render} from "../components/interceptors/render";
+
 
 /**
  * Controller example
@@ -25,15 +24,13 @@ import {Render} from "../interceptors/render";
 })
 export class HomeController {
 
-  @Inject() assetLoader: AssetsLoader;
   @Inject() engine: TemplateEngine;
-  @Inject() cache: InMemoryCache;
   @ResolvedRoute() route: IResolvedRoute;
 
 
   @Render("home_id")
   @GET("/params/<id:(\\d+)>/<name>")
-  async actionId(@PathParam("id") id: number, @PathParam("name") name: string) {
+  async actionId(@PathParam("id") id: number, @PathParam("name") name: string): Promise<any> {
     return {
       id,
       name,
@@ -46,14 +43,12 @@ export class HomeController {
    * Rendering Template
    */
   @GET()
-  async actionIndex() {
-    const result = await this.engine.compileAndRender("home_id", {
+  async actionIndex() : Promise<Buffer> {
+    return await this.engine.compileAndRender("home_id", {
       id: "NO_ID",
       name: "this is home page",
       title: "Home page example",
       href: this.route.url.href
     });
-    this.cache.set(this.route.path, result);
-    return result;
   }
 }

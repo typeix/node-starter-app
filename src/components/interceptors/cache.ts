@@ -1,4 +1,4 @@
-import {InMemoryCache} from "../components/in-memory-cache";
+import {InMemoryCache} from "../in-memory-cache";
 import {Injectable, Inject, RequestInterceptor, InterceptedRequest} from "@typeix/resty";
 
 /**
@@ -15,9 +15,9 @@ export class CacheInterceptor implements RequestInterceptor {
 
   async invoke(method: InterceptedRequest): Promise<any> {
     if (await this.cacheProvider.has(method.route.path)) {
-      const result = await this.cacheProvider.get(method.route.path);
-      method.response.end(result);
-      return result;
+      return await this.cacheProvider.get(method.route.path);
+    } else {
+      this.cacheProvider.set(method.route.path, await method.handler(), 120);
     }
   }
 }

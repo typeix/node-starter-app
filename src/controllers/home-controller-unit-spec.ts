@@ -14,10 +14,6 @@ describe("Home controller", () => {
     compileAndRender: tpl => Promise.resolve(tpl)
   };
   let responseMock = {};
-  let cacheMock = {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,@typescript-eslint/no-empty-function
-    set: (key, val) => {}
-  };
   let route = {
     path: "/",
     url: {
@@ -27,10 +23,6 @@ describe("Home controller", () => {
 
   beforeAll(() => {
     let injector = Injector.createAndResolve(HomeController, [
-      {
-        provide: InMemoryCache,
-        useValue: cacheMock
-      },
       {
         provide: ResolvedRoute,
         useValue: route
@@ -53,7 +45,6 @@ describe("Home controller", () => {
 
   it("Should test redirect action", async () => {
     let templateSpy = jest.spyOn(templateMock, "compileAndRender");
-    let cacheSpy = jest.spyOn(cacheMock, "set");
     await controller.actionIndex();
     expect(templateSpy).toHaveBeenCalledWith("home_id", {
       id: "NO_ID",
@@ -61,6 +52,5 @@ describe("Home controller", () => {
       title: "Home page example",
       href: "/"
     });
-    expect(cacheSpy).toHaveBeenCalledWith(route.path, "home_id");
   });
 });

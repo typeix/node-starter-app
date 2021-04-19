@@ -1,10 +1,9 @@
 import {
   createMethodInterceptor,
-  getResponse,
   Inject,
   Injectable, Interceptor, Method
 } from "@typeix/resty";
-import {TemplateEngine} from "../components/templating-engine";
+import {TemplateEngine} from "../templating-engine";
 
 @Injectable()
 export class RenderInterceptor implements Interceptor {
