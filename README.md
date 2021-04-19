@@ -13,7 +13,11 @@ framework for building scalable applications.
 [![Build Status][travis-url]][travis-img]
 [![Coverage Status][coverage-img]][coverage-url]
 
-This is runnable example, preview of application development with @typeix/resty
+* This is official starter and preview of application development with @typeix/resty
+* [Typeix Official && Documentation](https://typeix.com)
+* `@typeix/resty` is typescript lightweight framework for node js
+* Works with node version >= 12.9.x > latest
+
 
 ### Running demo:
 * Checkout repo
