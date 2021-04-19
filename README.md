@@ -36,10 +36,10 @@ npm start
 * http://localhost:9000/dynamic-simulation
 * http://localhost:9000/dynamic-db-simulation
 
-[travis-url]: https://travis-ci.com/typeix/resty-starter.svg?branch=master
+[travis-url]: https://travis-ci.com/typeix/resty-webapp-starter.svg?branch=master
 
-[travis-img]: https://travis-ci.com/typeix/resty-starter
+[travis-img]: https://travis-ci.com/typeix/resty-webapp-starter
 
-[coverage-img]: https://coveralls.io/repos/github/typeix/resty-starter/badge.svg?branch=master
+[coverage-img]: https://coveralls.io/repos/github/typeix/resty-webapp-starter/badge.svg?branch=master
 
-[coverage-url]: https://coveralls.io/github/typeix/resty-starter?branch=master
+[coverage-url]: https://coveralls.io/github/typeix/resty-webapp-starter?branch=master
