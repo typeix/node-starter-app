@@ -7,3 +7,5 @@
 *.js.map
 .idea
 *.iml
+/coverage
+.nyc_output
