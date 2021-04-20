@@ -6,8 +6,6 @@ import {
 } from "@typeix/resty";
 import {getType} from "mime";
 import {ServerResponse} from "http";
-import {CacheInterceptor} from "../components/interceptors/request/cache";
-import {addRequestInterceptor} from "@typeix/resty/build/interceptors/request";
 /**
  * Controller example
  * @constructor
