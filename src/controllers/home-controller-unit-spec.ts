@@ -3,7 +3,6 @@ import {HomeController} from "./home-controller";
 import {AssetsLoader} from "../components/assets-loader";
 import {TemplateEngine} from "../components/templating-engine";
 import {ServerResponse} from "http";
-import {InMemoryCache} from "../components/in-memory-cache";
 
 
 describe("Home controller", () => {

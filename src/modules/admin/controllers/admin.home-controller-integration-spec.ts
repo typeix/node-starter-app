@@ -1,4 +1,4 @@
-import {fakeHttpServer, Injector} from "@typeix/resty";
+import {fakeHttpServer} from "@typeix/resty";
 import {Application} from "../../../application";
 
 
