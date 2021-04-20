@@ -6,17 +6,14 @@
   <title>{{title}}</title>
 </head>
 <body>
-<h1>Headline: {{name}}</h1>
-<p>
-  Methods id: {{id}} name: {{name}};
-</p>
-<p>
-  Current route: {{href}}
-</p>
+<h1>File upload: {{message}}</h1>
+<form action="/admin/upload" method="POST" enctype="multipart/form-data">
+  <input type="file" name="filefield" /><br />
+  <input type="submit" />
+</form>
 <div>
   <h2>Routes</h2>
   <ul>
-    <li><a href="/admin/upload">/admin/upload -> file upload example</a></li>
     <li><a href="/">Home Page</a></li>
     <li><a href="/params/100/name">/params/100/name</a></li>
     <li><a href="/admin">/admin</a></li>

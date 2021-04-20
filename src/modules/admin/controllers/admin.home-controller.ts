@@ -1,5 +1,8 @@
-import {Controller, GET, Inject, OnError, RouterError} from "@typeix/resty";
+import {Controller, GET, Inject, OnError, POST, RouterError} from "@typeix/resty";
 import {ServerResponse} from "http";
+import {addRequestInterceptor} from "@typeix/resty/build/interceptors/request";
+import {FileUpload} from "./interceptors/file-upload";
+import {Render} from "../../../components/interceptors/method/render";
 
 /**
  * Controller example
@@ -53,4 +56,14 @@ export class AdminHomeController {
     return "GET actionIndex: admin module";
   }
 
+  @GET("/upload")
+  @POST("/upload")
+  @Render("fileupload")
+  @addRequestInterceptor(FileUpload, {uploadPath: "/public/upload/"})
+  actionUploadFile() {
+    return {
+      title: "File Upload example",
+      message: "Magic is here"
+    }
+  }
 }

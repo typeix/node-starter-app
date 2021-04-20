@@ -26,6 +26,8 @@
   },
   "dependencies": {
     "@typeix/resty": "^7.0.4",
+    "@types/busboy": "^0.2.3",
+    "busboy": "^0.3.1",
     "mime": "^2.5.2",
     "mu2": "^0.5.21"
   },
