@@ -9,10 +9,8 @@ import {TemplateEngine} from "../../templating-engine";
 export class RenderInterceptor implements Interceptor {
   @Inject() engine: TemplateEngine;
   async invoke(method: Method): Promise<any> {
-    const result = await this.engine.compileAndRender(
-      method.decoratorArgs.value,
-      await method.invoke()
-    );
+    const data = await method.invoke();
+    const result = await this.engine.compileAndRender(method.decoratorArgs.value, data);
     return await method.transform(result);
   }
 }
