@@ -3,7 +3,7 @@ import {
   Inject,
   Injectable, Interceptor, Method
 } from "@typeix/resty";
-import {TemplateEngine} from "../templating-engine";
+import {TemplateEngine} from "../../templating-engine";
 
 @Injectable()
 export class RenderInterceptor implements Interceptor {
@@ -17,6 +17,15 @@ export class RenderInterceptor implements Interceptor {
   }
 }
 
+/**
+ * Asset loader service
+ * @constructor
+ * @function
+ * @name Render
+ *
+ * @description
+ * Render template
+ */
 export function Render(value: string) {
   return createMethodInterceptor(Render, RenderInterceptor, {value});
 }

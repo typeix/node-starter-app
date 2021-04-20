@@ -6,6 +6,8 @@ import {
 } from "@typeix/resty";
 import {getType} from "mime";
 import {ServerResponse} from "http";
+import {CacheInterceptor} from "../components/interceptors/request/cache";
+import {addRequestInterceptor} from "@typeix/resty/build/interceptors/request";
 /**
  * Controller example
  * @constructor
@@ -51,8 +53,8 @@ export class AssetsController {
    */
   @GET("assets/<file:(.*)>")
   async fileLoadAction(@PathParam("file") file: string) {
-    const type = getType(AssetsLoader.publicPath(file));
     const loadedFile: Buffer = await this.assetLoader.load(file);
+    const type = getType(AssetsLoader.publicPath(file));
     this.response.setHeader("Content-Type", type);
     this.response.setHeader("Content-Length", loadedFile.length);
     return loadedFile;
