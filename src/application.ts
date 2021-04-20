@@ -16,6 +16,7 @@ import {TemplateEngine} from "./components/templating-engine";
 import {InMemoryCache} from "./components/in-memory-cache";
 import {DynamicRouteRule} from "./components/dynamic-route-rule";
 import {UrlDataStoreService} from "./components/url-data-store.service";
+import {FileUploadModule} from "./modules/file-upload/file-upload.module";
 
 /**
  * Application entry point
@@ -27,7 +28,7 @@ import {UrlDataStoreService} from "./components/url-data-store.service";
  * \@Module is used to define application entry point class
  */
 @RootModule({
-  imports: [AdminModule], // bootstrap in recursive top level order
+  imports: [AdminModule, FileUploadModule], // bootstrap in recursive top level order
   controllers: [AssetsController, HomeController], // no order
   providers: [AssetsLoader, TemplateEngine],
   shared_providers: [

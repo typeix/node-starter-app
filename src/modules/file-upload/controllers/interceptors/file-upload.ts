@@ -28,7 +28,7 @@ export class FileUpload implements RequestInterceptor {
         parser.on("finish", () => {
           method.response.writeHead(303, {
             "Connection": "close",
-            "Location": "/admin/upload?isUploaded=true"
+            "Location": method.route.path + "?isUploaded=true"
           });
           method.response.end();
           resolve("UPLOADED");

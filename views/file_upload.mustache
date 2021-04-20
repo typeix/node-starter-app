@@ -6,8 +6,8 @@
   <title>{{title}}</title>
 </head>
 <body>
-<h1>File upload: {{message}}</h1>
-<form action="/admin/upload" method="POST" enctype="multipart/form-data">
+<h1>File upload: {{message}} {{#isUploaded}}uploaded: true{{/isUploaded}}</h1>
+<form action="/file/upload" method="POST" enctype="multipart/form-data">
   <input type="file" name="filefield" /><br />
   <input type="submit" />
 </form>
