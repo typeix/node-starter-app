@@ -2,7 +2,6 @@ import {Injector} from "@typeix/resty";
 import {AssetsLoader} from "../components/assets-loader";
 import {ServerResponse} from "http";
 import {AssetsController} from "./assets-controller";
-import {getType} from "mime";
 
 jest.mock("mime");
 
