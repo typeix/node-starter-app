@@ -1,4 +1,4 @@
-import {AssetsLoader} from "../components/assets-loader";
+import {AssetsLoader} from "@app/components/assets-loader";
 import {
   Inject,
   Produces,

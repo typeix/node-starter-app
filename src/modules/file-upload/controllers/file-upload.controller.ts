@@ -1,5 +1,5 @@
 import {addRequestInterceptor, Controller, GET, IResolvedRoute, POST, ResolvedRoute} from "@typeix/resty";
-import {Render} from "../../../components/interceptors/method/render";
+import {Render} from "@app/components/interceptors/method/render";
 import {FileUpload} from "./interceptors/file-upload";
 
 @Controller({

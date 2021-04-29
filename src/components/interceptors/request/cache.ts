@@ -1,4 +1,4 @@
-import {InMemoryCache} from "../../in-memory-cache";
+import {InMemoryCache} from "@app/components/in-memory-cache";
 import {Injectable, Inject, RequestInterceptor, InterceptedRequest} from "@typeix/resty";
 
 /**

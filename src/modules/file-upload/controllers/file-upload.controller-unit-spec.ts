@@ -1,14 +1,15 @@
-import {Injector, IResolvedRoute, Logger, POST, ResolvedRoute, Router, verifyProvider} from "@typeix/resty";
+import {Injector, IResolvedRoute, Logger, POST, ResolvedRoute, Router} from "@typeix/resty";
 import {FileUploadController} from "./file-upload.controller";
-import {TemplateEngine} from "../../../components/templating-engine";
 import {createRoute} from "@typeix/resty/build/helpers/server";
-import {FileUploadModule} from "../file-upload.module";
+import {FileUploadModule} from "@app/modules/file-upload/file-upload.module";
+import {TemplateEngine} from "@app/components/templating-engine";
 import {IncomingMessage, ServerResponse} from "http";
 import {Socket} from "net";
 
 describe("FileUpload controller", () => {
 
   it("Should render", async () => {
+
     const headers = {};
     const route: IResolvedRoute = {
       path: "/file/upload",

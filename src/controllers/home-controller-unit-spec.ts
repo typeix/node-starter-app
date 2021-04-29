@@ -1,7 +1,7 @@
 import {Injector, ResolvedRoute} from "@typeix/resty";
 import {HomeController} from "./home-controller";
-import {AssetsLoader} from "../components/assets-loader";
-import {TemplateEngine} from "../components/templating-engine";
+import {AssetsLoader} from "@app/components/assets-loader";
+import {TemplateEngine} from "@app/components/templating-engine";
 import {ServerResponse} from "http";
 
 

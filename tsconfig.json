@@ -5,7 +5,12 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "outDir": "build",
-    "rootDir": "./src",
+    "baseUrl": "./src",
+    "paths": {
+      "@app/*": [
+        "*"
+      ]
+    },
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
