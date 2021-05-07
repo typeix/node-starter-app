@@ -25,6 +25,7 @@ framework for building scalable applications.
 ```npm
 npm install
 npm start
+npm run start:dev
 ```
 
 
