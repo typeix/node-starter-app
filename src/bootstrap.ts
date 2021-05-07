@@ -14,5 +14,5 @@ import {createServer} from "http";
  */
 const server = createServer();
 pipeServer(server, Application);
-server.on("error", e => console.error(e))
+server.on("error", e => console.error(e));
 server.listen(9000);

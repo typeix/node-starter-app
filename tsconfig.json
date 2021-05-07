@@ -1,24 +1,25 @@
 {
   "compilerOptions": {
-    "declaration": true,
-    "target": "es2019",
     "module": "commonjs",
     "moduleResolution": "node",
-    "outDir": "build",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2019",
+    "sourceMap": true,
+    "outDir": "./dist",
     "baseUrl": "./src",
+    "incremental": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "paths": {
       "@app/*": [
         "*"
       ]
     },
-    "sourceMap": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "removeComments": true,
-    "noImplicitAny": false,
-    "typeRoots": [
-      "node_modules/@types"
-    ],
     "plugins": [
       {
         "transform": "typescript-transform-paths"
@@ -31,9 +32,5 @@
   "include": [
     "src/**/*",
     "src/*"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
-  "compileOnSave": true
+  ]
 }

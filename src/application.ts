@@ -38,6 +38,7 @@ import {FileUploadModule} from "./modules/file-upload/file-upload.module";
       provide: Logger,
       useFactory: () => new Logger({
         options: {
+          prettyPrint: true,
           level: "debug"
         }
       })
