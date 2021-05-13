@@ -15,8 +15,8 @@ describe("Assets controller",  () => {
   let responseMock = {
     setHeader: (key, val) => headers.push([key, val])
   };
-  beforeAll(() => {
-    let injector = Injector.createAndResolve(AssetsController, [
+  beforeAll(async () => {
+    let injector = await Injector.createAndResolve(AssetsController, [
       {
         provide: ServerResponse,
         useValue: responseMock

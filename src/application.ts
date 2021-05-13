@@ -6,7 +6,7 @@ import {
   Logger,
   createRouteHandler,
   createRouteDefinition,
-  GET
+  GET, Injector
 } from "@typeix/resty";
 import {AssetsLoader} from "./components/assets-loader";
 import {AssetsController} from "./controllers/assets-controller";
@@ -30,10 +30,11 @@ import {FileUploadModule} from "./modules/file-upload/file-upload.module";
 @RootModule({
   imports: [AdminModule, FileUploadModule], // bootstrap in recursive top level order
   controllers: [AssetsController, HomeController], // no order
-  providers: [AssetsLoader, TemplateEngine],
+  providers: [AssetsLoader],
   shared_providers: [
     InMemoryCache,
     UrlDataStoreService,
+    TemplateEngine,
     {
       provide: Logger,
       useFactory: () => new Logger({
@@ -49,7 +50,7 @@ import {FileUploadModule} from "./modules/file-upload/file-upload.module";
 export class Application implements IAfterConstruct {
 
   @Inject() router: Router;
-
+  @Inject() injector: Injector;
   /**
    * @function
    * @name Application#afterConstruct
@@ -62,6 +63,7 @@ export class Application implements IAfterConstruct {
     this.router.addRule(
       DynamicRouteRule,
       {
+        injector: this.injector,
         method: "GET",
         path: "This is ignored in dynamic router",
         handler: createRouteHandler(

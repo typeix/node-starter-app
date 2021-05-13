@@ -20,8 +20,8 @@ describe("Home controller", () => {
     }
   };
 
-  beforeAll(() => {
-    let injector = Injector.createAndResolve(HomeController, [
+  beforeAll( () => {
+    let injector =  Injector.Sync.createAndResolve(HomeController, [
       {
         provide: ResolvedRoute,
         useValue: route

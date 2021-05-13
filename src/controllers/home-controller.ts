@@ -43,7 +43,7 @@ export class HomeController {
    * Rendering Template
    */
   @GET()
-  async actionIndex() : Promise<Buffer> {
+  async actionIndex(): Promise<Buffer> {
     return await this.engine.compileAndRender("home_id", {
       id: "NO_ID",
       name: "this is home page",

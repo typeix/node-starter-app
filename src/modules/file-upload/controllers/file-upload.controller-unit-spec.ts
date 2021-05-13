@@ -16,20 +16,22 @@ describe("FileUpload controller", () => {
       headers: headers,
       params: {},
       handler: () => {
+        //
       },
       method: "GET",
       url: Router.parseURI("/", headers)
     };
     const templateMock = {
       compileAndRender: () => {
-
-      }
-    }
-    const logger = {
-      debug: () => {
+        //
       }
     };
-    const injector = Injector.createAndResolve(FileUploadController, [
+    const logger = {
+      debug: () => {
+        //
+      }
+    };
+    const injector = Injector.Sync.createAndResolve(FileUploadController, [
       {
         provide: ResolvedRoute,
         useValue: route
@@ -72,6 +74,7 @@ describe("FileUpload controller", () => {
       method: "POST",
       url: Router.parseURI("/", headers)
     };
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const injector = createServerInjectorMock((request: IncomingMessage, response: ServerResponse) => {
       request.url = route.path;
       request.method = route.method;
@@ -83,6 +86,7 @@ describe("FileUpload controller", () => {
   });
 
 
+  // eslint-disable-next-line no-shadow
   function createServerInjectorMock(transform: (request: IncomingMessage, response: ServerResponse) => void): Injector {
     const injector = new Injector();
     const request = new IncomingMessage(new Socket());

@@ -4,7 +4,7 @@ import {
   IResolvedRoute,
   Inject,
   RouteConfig,
-  IRouteConfig
+  IRouteConfig, Injector
 } from "@typeix/resty";
 import {InMemoryCache} from "./in-memory-cache";
 import {UrlDataStoreService} from "./url-data-store.service";
@@ -23,6 +23,7 @@ export class DynamicRouteRule implements IRoute {
 
   @Inject() cache: InMemoryCache;
   @Inject() datastore: UrlDataStoreService;
+  @Inject() injector: Injector;
   @RouteConfig() config: IRouteConfig;
   /**
    * Dynamic parse request example
@@ -35,6 +36,7 @@ export class DynamicRouteRule implements IRoute {
   async parseRequest(uri: URL, method: string, headers: { [key: string]: any }): Promise<IResolvedRoute> {
     if (await this.datastore.isValid(uri.pathname) && this.config.method === method) {
       return {
+        injector: this.injector,
         method,
         headers,
         url: uri,
