@@ -1,17 +1,19 @@
 import {Injector, IResolvedRoute, Logger, POST, ResolvedRoute, Router} from "@typeix/resty";
 import {FileUploadController} from "./file-upload.controller";
-import {createRoute} from "@typeix/resty/build/helpers/server";
 import {FileUploadModule} from "@app/modules/file-upload/file-upload.module";
 import {TemplateEngine} from "@app/components/templating-engine";
 import {IncomingMessage, ServerResponse} from "http";
 import {Socket} from "net";
+import {createRoute} from "@typeix/resty/dist/helpers/server";
 
 describe("FileUpload controller", () => {
 
   it("Should render", async () => {
 
     const headers = {};
+
     const route: IResolvedRoute = {
+      injector: new Injector(),
       path: "/file/upload",
       headers: headers,
       params: {},
@@ -67,6 +69,7 @@ describe("FileUpload controller", () => {
       FileUploadModule
     );
     const route: IResolvedRoute = {
+      injector: new Injector(),
       path: "/file/upload",
       headers: headers,
       params: {},
