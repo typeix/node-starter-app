@@ -1,7 +1,8 @@
 {
   "npmClient": "npm",
   "packages": [
-    "./web-app-file-upload"
+    "./web-app-file-upload",
+    "./api-typeorm-sql"
   ],
   "version": "8.0.0"
 }

@@ -1,6 +1,6 @@
 import {fakeHttpServer, Injector} from "@typeix/resty";
-import {Application} from "@app/application";
-import {TemplateEngineService} from "@app/components/templating-engine.service";
+import {Application} from "~/application";
+import {TemplateEngineService} from "~/components/templating-engine.service";
 
 
 describe("Home controller", () => {

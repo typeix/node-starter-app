@@ -1,7 +1,7 @@
 import {Injector, IResolvedRoute, Logger, POST, ResolvedRoute, Router} from "@typeix/resty";
 import {FileUploadController} from "./file-upload.controller";
-import {FileUploadModule} from "@app/modules/file-upload/file-upload.module";
-import {TemplateEngineService} from "@app/components/templating-engine.service";
+import {FileUploadModule} from "~/modules/file-upload/file-upload.module";
+import {TemplateEngineService} from "~/components/templating-engine.service";
 import {IncomingMessage, ServerResponse} from "http";
 import {Socket} from "net";
 import {createRoute} from "@typeix/resty/dist/helpers/server";

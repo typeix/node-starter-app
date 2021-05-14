@@ -1,5 +1,5 @@
 import {Injector} from "@typeix/resty";
-import {AssetsLoaderService} from "@app/components/assets-loader.service";
+import {AssetsLoaderService} from "~/components/assets-loader.service";
 import {ServerResponse} from "http";
 import {AssetsController} from "./assets.controller";
 

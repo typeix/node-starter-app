@@ -1,7 +1,7 @@
 import {Inject, Controller, GET, PathParam, ResolvedRoute, IResolvedRoute} from "@typeix/resty";
-import {TemplateEngineService} from "@app/components/templating-engine.service";
-import {CacheInterceptor} from "@app/components/interceptors/request/cache.interceptor";
-import {Render} from "@app/components/interceptors/method/render.interceptor";
+import {TemplateEngineService} from "~/components/templating-engine.service";
+import {CacheInterceptor} from "~/components/interceptors/request/cache.interceptor";
+import {Render} from "~/components/interceptors/method/render.interceptor";
 
 
 /**

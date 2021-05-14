@@ -1,5 +1,5 @@
 import {fakeHttpServer} from "@typeix/resty";
-import {Application} from "@app/application";
+import {Application} from "~/application";
 
 
 describe("AdminHome controller", () => {
