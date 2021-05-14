@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="/favicon.png"/>
+  <link rel="stylesheet" href="/assets/css/main.css"/>
+  <meta charset="UTF-8">
+  <title>{{title}}</title>
+</head>
+<body>
+<img src="/assets/logo.png" width="100"/>
+<h1>File upload: {{message}} {{#isUploaded}}uploaded: true{{/isUploaded}}</h1>
+<form action="/file/upload" method="POST" enctype="multipart/form-data">
+  <input type="file" name="filefield"/><br/>
+  <input type="submit"/>
+</form>
+<div>
+  <h2>Routes</h2>
+  <ul>
+    <li><a href="/">Home Page</a></li>
+    <li><a href="/params/100/name">/params/100/name</a></li>
+    <li><a href="/admin">/admin</a></li>
+    <li><a href="/admin/throw">/admin/throw</a></li>
+    <li><a href="/admin/fire">/admin/fire</a></li>
+    <li><a href="/favicon.ico">/favicon.ico</a></li>
+    <li><a href="/dynamic">/dynamic -> DynamicRouter</a></li>
+    <li><a href="/dynamic-simulation">/dynamic-simulation -> DynamicRouter</a></li>
+    <li><a href="/dynamic-db-simulation">/dynamic-db-simulation -> DynamicRouter</a></li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,9 +1,7 @@
 .idea/
-/node_modules
-/build
-/package-lock.json
+node_modules
+coverage
+package-lock.json
 *.iml
-/coverage
-/public/upload
 .nyc_output
-/dist
+dist
