@@ -1,6 +1,7 @@
 {
-  "name": "@typeix/resty-starter",
+  "name": "@resty-starter/file-upload",
   "version": "8.0.0",
+  "private": true,
   "license": "MIT",
   "repository": {
     "type": "git",

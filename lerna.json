@@ -1,0 +1,7 @@
+{
+  "npmClient": "npm",
+  "packages": [
+    "./web-app-file-upload"
+  ],
+  "version": "8.0.0"
+}

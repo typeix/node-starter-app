@@ -32,7 +32,7 @@ describe("Assets controller",  () => {
   it("Should fileLoadAction", async () => {
     const headerSpy = jest.spyOn(responseMock, "setHeader");
     const assetsSpy = jest.spyOn(assetsMock, "load");
-    const file = "/assets/favicon.ico";
+    const file = "/assets/favicon.png";
     const result = await controller.fileLoadAction(file);
     expect(headerSpy).toHaveBeenCalledTimes(2);
     expect(assetsSpy).toHaveBeenCalledWith(file);
@@ -45,7 +45,7 @@ describe("Assets controller",  () => {
 
   it("Should faviconLoader", async () => {
     const ctrlSpy = jest.spyOn(controller, "fileLoadAction");
-    const file = "favicon.ico";
+    const file = "favicon.png";
     await controller.faviconLoader();
     expect(ctrlSpy).toHaveBeenCalledWith(file);
   });
