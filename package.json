@@ -1,0 +1,33 @@
+{
+  "name": "resty-starters",
+  "version": "8.0.0",
+  "private": true,
+  "description": "Resty server application starters",
+  "scripts": {
+    "bootstrap": "lerna exec npm install",
+    "clean": "lerna exec rimraf dist",
+    "test": "lerna exec npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/typeix/resty-starters.git"
+  },
+  "keywords": [
+    "resty",
+    "starters",
+    "typescript",
+    "node.js",
+    "framework"
+  ],
+  "author": "Igor Ivanovic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/typeix/resty-starters/issues"
+  },
+  "homepage": "https://github.com/typeix/resty-starters#readme",
+  "devDependencies": {
+    "coveralls": "^3.1.0",
+    "lerna": "^4.0.0",
+    "rimraf": "^3.0.2"
+  }
+}
