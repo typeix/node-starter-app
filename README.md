@@ -14,4 +14,4 @@ framework for building scalable applications.
 * Works with node version >= 12.9.x > latest
 
 # Starters
-* [File upload starter](web-app-file-upload)
+* [File upload starter](web-app-file-upload) -> file upload application with busboy
