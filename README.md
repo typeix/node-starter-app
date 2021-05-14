@@ -9,9 +9,19 @@ framework for building scalable applications.
 </p>
 
 # Info
+
+[![Build Status][travis-url]][travis-img]
+[![Coverage Status][coverage-img]][coverage-url]
+
 * [Typeix Official](https://typeix.com)
 * `@typeix/resty` is typescript lightweight framework for node js
 * Works with node version >= 12.9.x > latest
 
 # Starters
 * [File upload starter](web-app-file-upload) -> file upload application with busboy and handlebars templating engine
+
+
+[travis-url]: https://travis-ci.com/typeix/resty-webapp-starter.svg?branch=master
+[travis-img]: https://travis-ci.com/typeix/resty-webapp-starter
+[coverage-img]: https://coveralls.io/repos/github/typeix/resty-starters/badge.svg?branch=master
+[coverage-url]: https://coveralls.io/github/typeix/resty-starters?branch=master

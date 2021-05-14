@@ -10,8 +10,6 @@ framework for building scalable applications.
 
 # @typeix/resty web application starter
 
-[![Build Status][travis-url]][travis-img]
-[![Coverage Status][coverage-img]][coverage-url]
 
 * This is official starter and preview of application development with @typeix/resty
 * [Typeix Official && Documentation](https://typeix.com)
@@ -40,11 +38,3 @@ npm run start:dev
 * http://localhost:9000/dynamic
 * http://localhost:9000/dynamic-simulation
 * http://localhost:9000/dynamic-db-simulation
-
-[travis-url]: https://travis-ci.com/typeix/resty-webapp-starter.svg?branch=master
-
-[travis-img]: https://travis-ci.com/typeix/resty-webapp-starter
-
-[coverage-img]: https://coveralls.io/repos/github/typeix/resty-webapp-starter/badge.svg?branch=master
-
-[coverage-url]: https://coveralls.io/github/typeix/resty-webapp-starter?branch=master
