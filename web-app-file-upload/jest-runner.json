@@ -30,7 +30,7 @@
   ],
   "coverageReporters": [
     "json",
-    "lcov",
+    ["lcov", {"projectRoot": "./../"}],
     "text",
     "html"
   ],
