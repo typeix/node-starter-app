@@ -8,12 +8,12 @@
   "synchronize": true,
   "logging": false,
   "entities": [
-    "src/modules/datastore/entity/**/*.ts"
+    "dist/modules/datastore/entity/**/*.js"
   ],
   "migrations": [
-    "src/modules/datastore/migration/**/*.ts"
+    "dist/modules/datastore/migration/**/*.js"
   ],
   "subscribers": [
-    "src/modules/datastore/subscriber/**/*.ts"
+    "dist/modules/datastore/subscriber/**/*.js"
   ]
 }
