@@ -18,7 +18,8 @@ framework for building scalable applications.
 * Works with node version >= 12.9.x > latest
 
 # Starters
-* [File upload starter](web-app-file-upload) -> file upload application with busboy and handlebars templating engine
+* [File Upload starter](web-app-file-upload) -> file upload application with busboy and handlebars templating engine
+* [Api TypeOrm starter](api-typeorm-sql) -> typeorm implementation with resty framework
 
 
 [travis-url]: https://travis-ci.com/typeix/resty-webapp-starter.svg?branch=master
