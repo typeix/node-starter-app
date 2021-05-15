@@ -6,7 +6,7 @@
   "password": "admin",
   "database": "typeix",
   "synchronize": true,
-  "logging": false,
+  "logging": true,
   "entities": [
     "dist/modules/datastore/entity/**/*.js"
   ],

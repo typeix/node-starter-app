@@ -22,6 +22,8 @@
   },
   "dependencies": {
     "@typeix/resty": "^8.0.2",
+    "chalk": "^4.1.1",
+    "highlight": "^0.2.4",
     "pg": "^8.6.0",
     "typeorm": "^0.2.32"
   },
