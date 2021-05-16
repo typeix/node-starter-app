@@ -5,8 +5,12 @@
   "username": "postgres",
   "password": "admin",
   "database": "typeix",
-  "synchronize": true,
+  "synchronize": false,
+  "migrationsRun": true,
   "logging": true,
+  "cli": {
+    "migrationsDir": "src/modules/datastore/migration"
+  },
   "entities": [
     "dist/modules/datastore/entity/**/*.js"
   ],

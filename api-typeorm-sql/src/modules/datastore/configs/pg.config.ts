@@ -2,7 +2,7 @@ import {CreateProvider, Injectable} from "@typeix/resty";
 import {Connection, createConnection, Logger} from "typeorm";
 import {Repository} from "typeorm/repository/Repository";
 import {EntityTarget} from "typeorm/common/EntityTarget";
-import * as pgConfig from "./ormconfig.json";
+import * as pgConfig from "~/ormconfig.json";
 import {ConnectionOptions} from "typeorm/connection/ConnectionOptions";
 import {PgLoggerConfig} from "~/modules/datastore/configs/pg.logger.config";
 

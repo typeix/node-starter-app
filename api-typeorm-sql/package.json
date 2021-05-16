@@ -6,6 +6,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "migration:run": "typeorm -f src/ormconfig.json migration:run",
+    "migration:create": "typeorm -f src/ormconfig.json migration:create -n",
     "prebuild": "rimraf dist",
     "build": "typeix build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
