@@ -1,6 +1,6 @@
 {
   "name": "api-typeorm-sql",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "",
   "author": "",
   "private": true,
@@ -23,15 +23,15 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@typeix/resty": "^8.0.2",
+    "@typeix/resty": "^8.0.7",
     "chalk": "^4.1.1",
     "highlight": "^0.2.4",
     "pg": "^8.6.0",
     "typeorm": "^0.2.32"
   },
   "devDependencies": {
-    "@typeix/cli": "^8.0.2",
-    "@typeix/schematics": "^8.0.2",
+    "@typeix/cli": "^8.0.7",
+    "@typeix/schematics": "^8.0.7",
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.36",
     "@typescript-eslint/eslint-plugin": "^4.19.0",
