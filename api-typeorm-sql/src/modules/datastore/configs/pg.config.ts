@@ -12,8 +12,9 @@ export class PgConfig {
   @CreateProvider({
     provide: Connection,
     useFactory: async (logger: Logger) => {
-      return await createConnection({
-        ...<ConnectionOptions>pgConfig,
+      return await createConnection(<ConnectionOptions>{
+        ...pgConfig,
+        logging: process.env.NODE_ENV !== "prod",
         logger
       })
 
