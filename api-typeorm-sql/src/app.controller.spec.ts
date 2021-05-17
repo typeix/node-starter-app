@@ -1,18 +1,18 @@
 import {Injector} from "@typeix/resty";
 import {AppController} from "./app.controller";
 import {AppService} from "./app.service";
-import {UserService} from "~/modules/datastore/services/user.service";
+import {UserRepository} from "~/modules/datastore/repository/user.repository";
 
 describe("AppController", () => {
 
   it("should return Hello World!", async () => {
     const userServiceMock = {
-      findAll: () => {}
+      find: () => {}
     };
     const injector = await Injector.createAndResolve(AppController, [
       AppService,
       {
-        provide: UserService,
+        provide: UserRepository,
         useValue: userServiceMock
       }
     ]);

@@ -1,6 +1,7 @@
 import {Controller, Inject, GET} from "@typeix/resty";
 import {AppService} from "./app.service";
-import {UserService} from "~/modules/datastore/services/user.service";
+import {UserRepository} from "~/modules/datastore/repository/user.repository";
+
 
 @Controller({
   path: "/",
@@ -10,11 +11,11 @@ import {UserService} from "~/modules/datastore/services/user.service";
 export class AppController {
 
   @Inject() appService: AppService;
-  @Inject() userService: UserService;
+  @Inject() userRepository: UserRepository;
 
   @GET("users")
   getUsers() {
-    return this.userService.findAll();
+    return this.userRepository.find();
   }
 
   @GET()

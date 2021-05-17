@@ -29,7 +29,7 @@ export class User1621192879101 implements MigrationInterface {
       INSERT INTO "user" (id, "firstName", "lastName", age)
       VALUES (1, 'Igor', 'Surname', 100),
              (2, 'Igor', 'Surname', 100);
-    `)
+    `);
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
