@@ -1,7 +1,7 @@
 import {Logger, RootModule} from "@typeix/resty";
 import {AppController} from "./app.controller";
 import {AppService} from "./app.service";
-import {PgModule} from "~/modules/datastore/pg.module";
+import {PgModule} from "~/modules/data-store/pg.module";
 
 @RootModule({
   imports: [PgModule],

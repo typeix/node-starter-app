@@ -9,15 +9,15 @@
   "migrationsRun": true,
   "logging": true,
   "cli": {
-    "migrationsDir": "src/modules/datastore/migration"
+    "migrationsDir": "src/modules/data-store/migration"
   },
   "entities": [
-    "dist/modules/datastore/entity/**/*.js"
+    "dist/modules/data-store/entity/**/*.js"
   ],
   "migrations": [
-    "dist/modules/datastore/migration/**/*.js"
+    "dist/modules/data-store/migration/**/*.js"
   ],
   "subscribers": [
-    "dist/modules/datastore/subscriber/**/*.js"
+    "dist/modules/data-store/subscriber/**/*.js"
   ]
 }

@@ -1,6 +1,6 @@
 import {IProvider, Module} from "@typeix/resty";
-import {PgConfig} from "~/modules/datastore/configs/pg.config";
-import {UserRepository} from "~/modules/datastore/repository/user.repository";
+import {PgConfig} from "~/modules/data-store/configs/pg.config";
+import {UserRepository} from "~/modules/data-store/repository/user.repository";
 import {ObjectType} from "typeorm";
 
 function createRepositoryFactory<T>(Class: ObjectType<T>): IProvider {

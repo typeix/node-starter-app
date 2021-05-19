@@ -1,7 +1,7 @@
 import {Injector} from "@typeix/resty";
 import {AppController} from "./app.controller";
 import {AppService} from "./app.service";
-import {UserRepository} from "~/modules/datastore/repository/user.repository";
+import {UserRepository} from "~/modules/data-store/repository/user.repository";
 
 describe("AppController", () => {
 

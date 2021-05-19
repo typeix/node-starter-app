@@ -1,7 +1,7 @@
 import {CreateProvider, Injectable} from "@typeix/resty";
 import {Connection, createConnection, Logger, ObjectType, EntityManager, ConnectionOptions} from "typeorm";
 import * as pgConfig from "~/ormconfig.json";
-import {PgLoggerConfig} from "~/modules/datastore/configs/pg.logger.config";
+import {PgLoggerConfig} from "~/modules/data-store/configs/pg.logger.config";
 
 @Injectable()
 export class PgConfig {

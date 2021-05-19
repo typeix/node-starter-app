@@ -1,5 +1,5 @@
 import {Injectable} from "@typeix/resty";
-import {User} from "~/modules/datastore/entity/user.entity";
+import {User} from "~/modules/data-store/entity/user.entity";
 import {EntityRepository, Repository} from "typeorm";
 
 @Injectable()
