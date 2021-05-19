@@ -23,15 +23,15 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@typeix/resty": "^8.0.7",
+    "@typeix/resty": "^8.1.0",
     "chalk": "^4.1.1",
     "highlight": "^0.2.4",
     "pg": "^8.6.0",
     "typeorm": "^0.2.32"
   },
   "devDependencies": {
-    "@typeix/cli": "^8.0.7",
-    "@typeix/schematics": "^8.0.7",
+    "@typeix/cli": "^8.1.0",
+    "@typeix/schematics": "^8.1.0",
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.36",
     "@typescript-eslint/eslint-plugin": "^4.19.0",

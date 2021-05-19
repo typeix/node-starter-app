@@ -19,6 +19,9 @@ export class PgConfig {
     providers: [PgLoggerConfig]
   }) private connection: Connection;
 
+  getConnection(): Connection {
+    return this.connection;
+  }
 
   getEntityManager(): EntityManager {
     return this.connection.manager;
