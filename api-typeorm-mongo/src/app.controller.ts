@@ -20,7 +20,7 @@ export class AppController {
   }
 
   @POST("users")
-  createUserWithDefaultTransactionLevel() {
+  createUser() {
     const user = new User();
     user.age = 100;
     user.firstName = "Igor";
