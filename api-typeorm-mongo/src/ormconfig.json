@@ -1,0 +1,14 @@
+{
+  "type": "mongodb",
+  "host": "localhost",
+  "port": 27017,
+  "username": null,
+  "password": null,
+  "database": "typeix",
+  "useUnifiedTopology": true,
+  "useNewUrlParser": true,
+  "synchronize": false,
+  "entities": [
+    "dist/modules/data-store/entity/**/*.js"
+  ]
+}
