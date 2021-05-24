@@ -21,13 +21,13 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@typeix/resty": "^8.1.0",
+    "@typeix/resty": "^8.1.1",
     "cli-highlight": "^2.1.11",
     "mongodb": "^3.6.7",
     "typeorm": "^0.2.32"
   },
   "devDependencies": {
-    "@typeix/cli": "^8.1.0",
+    "@typeix/cli": "^8.1.1",
     "@typeix/schematics": "^8.1.0",
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.36",
