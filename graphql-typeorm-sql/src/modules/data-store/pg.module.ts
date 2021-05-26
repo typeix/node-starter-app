@@ -3,15 +3,24 @@ import {PgConfig} from "~/modules/data-store/configs/pg.config";
 import {UserRepository} from "~/modules/data-store/repository/user.repository";
 import {createRepositoryFactory} from "~/modules/data-store/helpers";
 import {graphqlHTTP} from "express-graphql";
-import {GraphqlConfig} from "~/modules/data-store/configs/graphql.config";
-import {UserResolver} from "~/modules/data-store/resolvers/UserResolver";
+import {UserResolver} from "~/modules/data-store/resolvers/user.resolver";
+import {buildSchema} from "type-graphql";
 
 @Module({
   providers: [
     PgConfig,
     createRepositoryFactory(UserRepository),
     UserResolver,
-    GraphqlConfig
+    {
+      provide: "schema",
+      useFactory: async (injector: Injector) => {
+        return await buildSchema({
+          resolvers: [UserResolver],
+          container: <any>injector
+        });
+      },
+      providers: [Injector]
+    }
   ],
   exports: [UserRepository, PgConfig]
 })
@@ -19,12 +28,12 @@ export class PgModule implements IAfterConstruct {
 
   @Inject() router: Router;
   @Inject() logger: Logger;
-  @Inject() config: GraphqlConfig;
+  @Inject("schema") schema: any;
 
   afterConstruct(): void {
     this.router.post("/graphql", (injector: Injector) => {
       return graphqlHTTP({
-        schema: this.config.getSchema()
+        schema: this.schema
       })(
         <any>getRequest(injector),
         <any>getResponse(injector)
