@@ -1,4 +1,4 @@
-import {CreateProvider, Injectable, Injector, isArray} from "@typeix/resty";
+import {CreateProvider, Injectable, Injector} from "@typeix/resty";
 import {
   Connection,
   createConnection,
