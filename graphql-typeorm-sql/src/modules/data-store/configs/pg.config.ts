@@ -11,6 +11,8 @@ import {
 import * as pgConfig from "~/ormconfig.json";
 import {PgLoggerConfig} from "~/modules/data-store/configs/pg.logger.config";
 import {getMigrations} from "~/modules/data-store/helpers";
+import {buildSchema} from "type-graphql";
+import {UserResolver} from "~/modules/data-store/resolvers/UserResolver";
 
 @Injectable()
 export class PgConfig {
@@ -30,6 +32,21 @@ export class PgConfig {
     },
     providers: [PgLoggerConfig, Injector, ConnectionManager]
   }) private connection: Connection;
+
+  @CreateProvider({
+    provide: "schema",
+    useFactory: async (injector: Injector) => {
+      return await buildSchema({
+        resolvers: [UserResolver],
+        container: <any>injector
+      });
+    },
+    providers: [Injector]
+  }) private schema: any;
+
+  getGraphQLSchema() {
+    return this.schema;
+  }
 
   getConnection(): Connection {
     return this.connection;
