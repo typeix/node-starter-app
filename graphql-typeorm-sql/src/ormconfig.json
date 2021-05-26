@@ -1,0 +1,20 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "postgres",
+  "password": "admin",
+  "database": "typeix",
+  "synchronize": false,
+  "migrationsRun": true,
+  "logging": true,
+  "cli": {
+    "migrationsDir": "src/modules/data-store/migration"
+  },
+  "entities": [
+    "dist/modules/data-store/entity/**/*.js"
+  ],
+  "subscribers": [
+    "dist/modules/data-store/subscriber/**/*.js"
+  ]
+}
