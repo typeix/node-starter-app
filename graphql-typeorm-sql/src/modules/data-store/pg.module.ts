@@ -2,8 +2,8 @@ import {getRequest, getResponse, IAfterConstruct, Inject, Injector, Logger, Modu
 import {PgConfig} from "~/modules/data-store/configs/pg.config";
 import {UserRepository} from "~/modules/data-store/repository/user.repository";
 import {createRepositoryFactory} from "~/modules/data-store/helpers";
-import {graphqlHTTP} from "express-graphql";
 import {UserResolver} from "~/modules/data-store/resolvers/user.resolver";
+import {graphqlHTTP} from "express-graphql";
 import {buildSchema} from "type-graphql";
 
 @Module({
