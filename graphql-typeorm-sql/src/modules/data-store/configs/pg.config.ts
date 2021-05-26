@@ -5,24 +5,17 @@ import {
   Logger,
   ObjectType,
   EntityManager,
-  ConnectionOptions,
-  useContainer, ConnectionManager
+  ConnectionOptions
 } from "typeorm";
 import * as pgConfig from "~/ormconfig.json";
 import {PgLoggerConfig} from "~/modules/data-store/configs/pg.logger.config";
-import {getMigrations} from "~/modules/data-store/helpers";
-import {buildSchema} from "type-graphql";
-import {UserResolver} from "~/modules/data-store/resolvers/UserResolver";
 
 @Injectable()
 export class PgConfig {
 
   @CreateProvider({
     provide: Connection,
-    useFactory: async (logger: Logger, parent: Injector) => {
-      const migrations = await getMigrations();
-      const injector = await Injector.createAndResolveChild(parent, Function, migrations);
-      useContainer(injector);
+    useFactory: async (logger: Logger) => {
       return await createConnection(<ConnectionOptions>{
         ...pgConfig,
         name: "default",
@@ -30,23 +23,8 @@ export class PgConfig {
         logger
       });
     },
-    providers: [PgLoggerConfig, Injector, ConnectionManager]
+    providers: [PgLoggerConfig, Injector]
   }) private connection: Connection;
-
-  @CreateProvider({
-    provide: "schema",
-    useFactory: async (injector: Injector) => {
-      return await buildSchema({
-        resolvers: [UserResolver],
-        container: <any>injector
-      });
-    },
-    providers: [Injector]
-  }) private schema: any;
-
-  getGraphQLSchema() {
-    return this.schema;
-  }
 
   getConnection(): Connection {
     return this.connection;

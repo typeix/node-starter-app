@@ -38,8 +38,5 @@
     "coveralls": "^3.1.0",
     "lerna": "^4.0.0",
     "rimraf": "^3.0.2"
-  },
-  "dependencies": {
-    "express-graphql": "^0.12.0"
   }
 }
