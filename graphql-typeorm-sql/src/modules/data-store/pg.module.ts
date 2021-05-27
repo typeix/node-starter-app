@@ -1,16 +1,26 @@
-import {getRequest, getResponse, IAfterConstruct, Inject, Injector, Logger, Module, Router} from "@typeix/resty";
+import {
+  getRequest,
+  getResponse,
+  IAfterConstruct,
+  Inject,
+  Injector,
+  Logger,
+  Module,
+  Router
+} from "@typeix/resty";
 import {PgConfig} from "~/modules/data-store/configs/pg.config";
 import {UserRepository} from "~/modules/data-store/repository/user.repository";
 import {createRepositoryFactory} from "~/modules/data-store/helpers";
-import {UserResolver} from "~/modules/data-store/resolvers/user.resolver";
+import {UserResolver} from "~/modules/data-store/controllers/graphql/user.resolver";
+import {UserController} from "~/modules/data-store/controllers/rest/user.controller";
 import {graphqlHTTP} from "express-graphql";
 import {buildSchema} from "type-graphql";
 
 @Module({
+  controllers: [UserController],
   providers: [
     PgConfig,
     createRepositoryFactory(UserRepository),
-    UserResolver,
     {
       provide: "schema",
       useFactory: async (injector: Injector) => {
@@ -19,10 +29,10 @@ import {buildSchema} from "type-graphql";
           container: <any>injector
         });
       },
-      providers: [Injector]
+      providers: [UserResolver, Injector]
     }
   ],
-  exports: [UserRepository, PgConfig]
+  exports: [UserRepository]
 })
 export class PgModule implements IAfterConstruct {
 
