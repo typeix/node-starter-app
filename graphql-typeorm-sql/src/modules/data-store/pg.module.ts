@@ -21,6 +21,7 @@ import {buildSchema} from "type-graphql";
   providers: [
     PgConfig,
     createRepositoryFactory(UserRepository),
+    UserResolver,
     {
       provide: "schema",
       useFactory: async (injector: Injector) => {
@@ -29,7 +30,7 @@ import {buildSchema} from "type-graphql";
           container: <any>injector
         });
       },
-      providers: [UserResolver, Injector]
+      providers: [Injector]
     }
   ],
   exports: [UserRepository]
