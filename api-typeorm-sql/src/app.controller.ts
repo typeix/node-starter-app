@@ -1,8 +1,9 @@
 import {Controller, Inject, GET, POST} from "@typeix/resty";
 import {AppService} from "./app.service";
 import {User} from "~/modules/data-store/entity/user.entity";
-import {UserRepository} from "~/modules/data-store/repository/user.repository";
 import {Transactional} from "~/modules/data-store/transactional.interceptor";
+import {UserService} from "~/modules/data-store/services/user.service";
+import {Repository} from "typeorm";
 
 
 @Controller({
@@ -13,16 +14,16 @@ import {Transactional} from "~/modules/data-store/transactional.interceptor";
 export class AppController {
 
   @Inject() appService: AppService;
-  @Inject() userRepository: UserRepository;
+  @Inject() userService: UserService;
 
   @GET("users")
   getUsers() {
-    return this.userRepository.find();
+    return this.userService.find();
   }
 
   @POST("users")
-  @Transactional(UserRepository)
-  createUser(@Inject() repository: UserRepository) {
+  @Transactional(User)
+  createUser(@Inject() repository: Repository<User>) {
     const user = new User();
     user.age = 100;
     user.firstName = "Igor";
@@ -36,7 +37,7 @@ export class AppController {
     user.age = 100;
     user.firstName = "Igor";
     user.lastName = "Surname";
-    return this.userRepository.save(user);
+    return this.userService.save(user);
   }
 
   @GET()

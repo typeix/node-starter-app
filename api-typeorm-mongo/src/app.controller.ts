@@ -1,7 +1,7 @@
 import {Controller, Inject, GET, POST} from "@typeix/resty";
 import {AppService} from "./app.service";
 import {User} from "~/modules/data-store/entity/user.entity";
-import {UserRepository} from "~/modules/data-store/repository/user.repository";
+import {UserService} from "~/modules/data-store/services/user.service";
 
 
 @Controller({
@@ -12,11 +12,11 @@ import {UserRepository} from "~/modules/data-store/repository/user.repository";
 export class AppController {
 
   @Inject() appService: AppService;
-  @Inject() userRepository: UserRepository;
+  @Inject() userService: UserService;
 
   @GET("users")
   getUsers() {
-    return this.userRepository.find();
+    return this.userService.find();
   }
 
   @POST("users")
@@ -25,7 +25,7 @@ export class AppController {
     user.age = 100;
     user.firstName = "Igor";
     user.lastName = "Surname";
-    return this.userRepository.save(user);
+    return this.userService.save(user);
   }
 
   @GET()

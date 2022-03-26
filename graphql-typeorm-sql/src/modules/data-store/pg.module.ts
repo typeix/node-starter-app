@@ -1,55 +1,20 @@
-import {
-  getRequest,
-  getResponse,
-  IAfterConstruct,
-  Inject,
-  Injector,
-  Logger,
-  Module,
-  Router
-} from "@typeix/resty";
-import {PgConfig} from "~/modules/data-store/configs/pg.config";
-import {UserRepository} from "~/modules/data-store/repository/user.repository";
-import {createRepositoryFactory} from "~/modules/data-store/helpers";
+import {Module} from "@typeix/resty";
+import {PgDataSource} from "~/modules/data-store/configs/pgdatasource.config";
 import {UserResolver} from "~/modules/data-store/controllers/graphql/user.resolver";
 import {UserController} from "~/modules/data-store/controllers/rest/user.controller";
-import {graphqlHTTP} from "express-graphql";
-import {buildSchema} from "type-graphql";
+import {UserService} from "~/modules/data-store/services/user.service";
+import {GraphQLSchemaConfig} from "~/modules/data-store/controllers/graphql/graph-ql-schema-config.service";
+import {GraphqlController} from "~/modules/data-store/controllers/graphql/graphql.controller";
 
 @Module({
-  controllers: [UserController],
+  controllers: [UserController, GraphqlController],
   providers: [
-    PgConfig,
-    createRepositoryFactory(UserRepository),
+    PgDataSource,
+    UserService,
     UserResolver,
-    {
-      provide: "schema",
-      useFactory: async (injector: Injector) => {
-        return await buildSchema({
-          resolvers: [UserResolver],
-          container: <any>injector
-        });
-      },
-      providers: [Injector]
-    }
-  ],
-  exports: [UserRepository]
+    GraphQLSchemaConfig
+  ]
 })
-export class PgModule implements IAfterConstruct {
+export class PgModule {
 
-  @Inject() router: Router;
-  @Inject() logger: Logger;
-  @Inject("schema") schema: any;
-
-  afterConstruct(): void {
-    this.router.post("/graphql", (injector: Injector) => {
-      return graphqlHTTP({
-        schema: this.schema
-      })(
-        <any>getRequest(injector),
-        <any>getResponse(injector)
-      );
-    });
-    this.logger.info("Router.add /graphql method POST");
-  }
 }

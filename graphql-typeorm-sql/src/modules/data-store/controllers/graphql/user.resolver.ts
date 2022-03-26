@@ -1,15 +1,15 @@
 import {Query, Resolver} from "type-graphql";
 import {User} from "~/modules/data-store/entity/user.entity";
 import {Inject, Injectable} from "@typeix/resty";
-import {UserRepository} from "~/modules/data-store/repository/user.repository";
+import {UserService} from "~/modules/data-store/services/user.service";
 
 @Injectable()
 @Resolver(User)
 export class UserResolver {
-  @Inject() userRepository: UserRepository;
+  @Inject() userService: UserService;
 
   @Query(() => [User])
   async users(): Promise<Array<User>> {
-    return await this.userRepository.find();
+    return await this.userService.find();
   }
 }

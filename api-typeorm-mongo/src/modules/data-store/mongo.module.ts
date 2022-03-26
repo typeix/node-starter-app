@@ -1,22 +1,15 @@
-import {IProvider, Module} from "@typeix/resty";
-import {MongoConfig} from "~/modules/data-store/configs/mongo.config";
-import {ObjectType} from "typeorm";
-import {UserRepository} from "~/modules/data-store/repository/user.repository";
+import {Module} from "@typeix/resty";
+import {MongoDataSource} from "~/modules/data-store/configs/mongo-data-source.service";
+import {UserService} from "~/modules/data-store/services/user.service";
 
-function createRepositoryFactory<T>(Class: ObjectType<T>): IProvider {
-  return  {
-    provide: Class,
-    useFactory: (config: MongoConfig) => config.getMongoRepository(Class),
-    providers: [MongoConfig]
-  };
-}
+
 
 @Module({
   providers: [
-    MongoConfig,
-    createRepositoryFactory(UserRepository)
+    MongoDataSource,
+    UserService
   ],
-  exports: [UserRepository]
+  exports: [UserService]
 })
 export class MongoModule {
 

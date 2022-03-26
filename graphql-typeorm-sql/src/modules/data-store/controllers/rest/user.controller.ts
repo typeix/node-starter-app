@@ -1,23 +1,24 @@
 import {Controller, GET, Inject, POST} from "@typeix/resty";
-import {UserRepository} from "~/modules/data-store/repository/user.repository";
 import {Transactional} from "~/modules/data-store/transactional.interceptor";
 import {User} from "~/modules/data-store/entity/user.entity";
+import {Repository} from "typeorm/repository/Repository";
+import {UserService} from "~/modules/data-store/services/user.service";
 
 @Controller({
   path: "/"
 })
 export class UserController {
 
-  @Inject() userRepository: UserRepository;
+  @Inject() userService: UserService;
 
   @GET("users")
   async users(): Promise<Array<User>> {
-    return this.userRepository.find();
+    return this.userService.find();
   }
 
   @POST("users")
-  @Transactional(UserRepository)
-  createUser(@Inject() repository: UserRepository) {
+  @Transactional(User)
+  createUser(@Inject() repository: Repository<User>) {
     const user = new User();
     user.age = 100;
     user.firstName = "Igor";
@@ -31,6 +32,6 @@ export class UserController {
     user.age = 100;
     user.firstName = "Igor";
     user.lastName = "Surname";
-    return this.userRepository.save(user);
+    return this.userService.save(user);
   }
 }

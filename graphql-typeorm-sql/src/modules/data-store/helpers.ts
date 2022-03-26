@@ -1,6 +1,6 @@
 import {IProvider} from "@typeix/resty";
 import {ObjectType} from "typeorm";
-import {PgConfig} from "~/modules/data-store/configs/pg.config";
+import {PgDataSource} from "~/modules/data-store/configs/pgdatasource.config";
 
 /**
  * @function
@@ -12,7 +12,7 @@ import {PgConfig} from "~/modules/data-store/configs/pg.config";
 export function createRepositoryFactory<T>(Class: ObjectType<T>): IProvider {
   return {
     provide: Class,
-    useFactory: (config: PgConfig) => config.getCustomRepository(Class),
-    providers: [PgConfig]
+    useFactory: (config: PgDataSource) => config.getRepository(Class),
+    providers: [PgDataSource]
   };
 }

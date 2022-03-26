@@ -1,4 +1,4 @@
-import {Injector, IResolvedRoute, Logger, POST, ResolvedRoute, Router} from "@typeix/resty";
+import {Injector, IResolvedRoute, Logger, POST, ResolvedRoute, Router, verifyProviders} from "@typeix/resty";
 import {FileUploadController} from "./file-upload.controller";
 import {FileUploadModule} from "~/modules/file-upload/file-upload.module";
 import {TemplateEngineService} from "~/components/templating-engine.service";
@@ -103,7 +103,7 @@ describe("FileUploadInterceptor controller", () => {
           level: "info"
         }
       })
-    }, []);
+    }, verifyProviders([TemplateEngineService]));
     transform(request, response);
     return injector;
   }
