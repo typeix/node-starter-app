@@ -8,15 +8,15 @@ export class UserService {
 
   @Inject() pgDataSource: PgDataSource;
 
-  protected getRepository(): Repository<User> {
-    return this.pgDataSource.getRepository(User);
-  }
-
   async find(): Promise<Array<User>> {
     return this.getRepository().find();
   }
 
   async save(entity: User): Promise<User> {
     return this.getRepository().save(entity);
+  }
+
+  protected getRepository(): Repository<User> {
+    return this.pgDataSource.getRepository(User);
   }
 }

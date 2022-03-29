@@ -8,15 +8,15 @@ export class UserService {
 
   @Inject() mongoDataSource: MongoDataSource;
 
-  protected getRepository(): MongoRepository<User> {
-    return this.mongoDataSource.getMongoRepository(User);
-  }
-
   async find(): Promise<Array<User>> {
     return this.getRepository().find();
   }
 
   async save(entity: User): Promise<User> {
     return this.getRepository().save(entity);
+  }
+
+  protected getRepository(): MongoRepository<User> {
+    return this.mongoDataSource.getMongoRepository(User);
   }
 }
