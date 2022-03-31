@@ -6,15 +6,17 @@ import {
   Injector,
   POST, RouterError
 } from "@typeix/resty";
-import {GraphQLSchemaConfig} from "~/modules/data-store/controllers/graphql/graph-ql-schema-config.service";
+import {GraphQLConfig} from "~/modules/data-store/controllers/graphql/graphql-config.service";
 import {graphql, Source, validate, parse, specifiedRules} from "graphql";
+import {UserResolver} from "~/modules/data-store/controllers/graphql/user.resolver";
 
 @Controller({
-  path: "/graphql"
+  path: "/graphql",
+  providers: [UserResolver]
 })
 export class GraphqlController {
 
-  @Inject() graphQLSchemaConfig: GraphQLSchemaConfig;
+  @Inject() graphQLSchemaConfig: GraphQLConfig;
   @Inject() injector: Injector;
 
   @POST()

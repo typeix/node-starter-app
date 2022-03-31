@@ -4,7 +4,7 @@ import {GraphQLSchema} from "graphql";
 import {UserResolver} from "~/modules/data-store/controllers/graphql/user.resolver";
 
 @Injectable()
-export class GraphQLSchemaConfig {
+export class GraphQLConfig {
 
   @CreateProvider({
     provide: "GraphqlConfigSchema",
