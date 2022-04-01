@@ -15,7 +15,7 @@ framework for building scalable applications.
 
 * [Typeix Official](https://typeix.com)
 * `@typeix/resty` is typescript lightweight framework for node js
-* Works with node version >= 12.9.x > latest
+* Works with node version >= 16.10.x > latest
 
 # Starters
 * [File Upload starter](web-app-file-upload) -> file upload application with busboy and handlebars templating engine

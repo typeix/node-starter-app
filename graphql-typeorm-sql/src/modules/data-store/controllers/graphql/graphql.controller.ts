@@ -6,7 +6,7 @@ import {
   Injector,
   POST, RouterError
 } from "@typeix/resty";
-import {GraphQLConfig} from "~/modules/data-store/controllers/graphql/graphql-config.service";
+import {GraphQLConfig} from "~/modules/data-store/controllers/graphql/graphql.config";
 import {graphql, Source, validate, parse, specifiedRules} from "graphql";
 import {UserResolver} from "~/modules/data-store/controllers/graphql/user.resolver";
 

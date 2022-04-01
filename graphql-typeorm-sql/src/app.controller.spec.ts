@@ -1,7 +1,7 @@
 import {Injector} from "@typeix/resty";
 import {AppController} from "./app.controller";
 import {AppService} from "./app.service";
-import {UserRepository} from "~/modules/data-store/repository/user.repository";
+import {UserService} from "~/modules/data-store/services/user.service";
 
 describe("AppController", () => {
 
@@ -12,7 +12,7 @@ describe("AppController", () => {
     const injector = await Injector.createAndResolve(AppController, [
       AppService,
       {
-        provide: UserRepository,
+        provide: UserService,
         useValue: userServiceMock
       }
     ]);
