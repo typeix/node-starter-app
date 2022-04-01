@@ -13,6 +13,6 @@ describe("PermissionController", () => {
   });
 
   it("should return permissions", () => {
-    expect(permissionController.permissions()).toBe(permissionService.find());
+    expect(permissionController.permissions()).toEqual(permissionService.find());
   });
 });

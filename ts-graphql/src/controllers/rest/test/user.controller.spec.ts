@@ -13,6 +13,6 @@ describe("UserController", () => {
   });
 
   it("should return users", () => {
-    expect(userController.users()).toBe(userService.find());
+    expect(userController.users()).toEqual(userService.find());
   });
 });
