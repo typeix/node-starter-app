@@ -2,14 +2,14 @@ import {fakeHttpServer, FakeServerApi} from "@typeix/resty";
 import {AppModule} from "~/app.module";
 
 
-describe("PermissionController", () => {
+describe("UserResolver", () => {
   let fakeServer: FakeServerApi;
 
   beforeEach(async () => {
     fakeServer = await fakeHttpServer(AppModule);
   });
   describe("Integration", () => {
-    test("GetPermissions", async () => {
+    test("GetUsers", async () => {
       let body = {
         "query": `
            query GetUsers {
@@ -42,7 +42,5 @@ describe("PermissionController", () => {
         }
       });
     });
-
   });
-
 });

@@ -17,7 +17,7 @@ import {GraphQLConfig} from "~/controllers/graphql/graphql.config";
         return new Logger({
           options: {
             prettyPrint: true,
-            level: "info"
+            level: "debug"
           }
         });
       }

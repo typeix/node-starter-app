@@ -31,7 +31,9 @@ export class GraphQLController {
     let documentAST = parse(source);
     let validationErrors = validate(schema, documentAST, specifiedRules);
     if (validationErrors.length > 0) {
-      throw new RouterError("GraphQL validation error.", 400, validationErrors);
+      for (let error of validationErrors) {
+        throw RouterError.from(error, 400);
+      }
     }
     return graphql(
       schema,

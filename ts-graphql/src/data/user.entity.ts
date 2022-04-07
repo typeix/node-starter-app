@@ -12,7 +12,7 @@ export class User {
 
   @Field() age: number;
 
-  permissions: Array<Permission> = [];
+  @Field(() => [Permission]) permissions: Array<Permission> = [];
 
   static new(id: number, firstName: string, lastName: string, age: number): User {
     let obj = new User();
