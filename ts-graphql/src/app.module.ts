@@ -16,8 +16,12 @@ import {GraphQLConfig} from "~/controllers/graphql/graphql.config";
       useFactory: () => {
         return new Logger({
           options: {
-            prettyPrint: true,
-            level: "debug"
+            transport: {
+              target: "pino-pretty",
+              options: {
+                colorize: true
+              }
+            }
           }
         });
       }

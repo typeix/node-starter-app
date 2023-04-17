@@ -13,8 +13,12 @@ import {PgModule} from "~/modules/data-store/pg.module";
       useFactory: () => {
         return new Logger({
           options: {
-            prettyPrint: true,
-            level: "info"
+            transport: {
+              target: "pino-pretty",
+              options: {
+                colorize: true
+              }
+            }
           }
         });
       }
