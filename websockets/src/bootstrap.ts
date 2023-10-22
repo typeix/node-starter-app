@@ -14,7 +14,7 @@ async function bootstrap() {
   const server = createServer();
   await pipeServer(server, AppModule);
   await pipeWebSocket(server, AppModule);
-  server.listen(3000);
+  server.listen(8080);
 }
 
 export default bootstrap();

@@ -28,13 +28,13 @@ npm run start:dev
 
 
 ### Implemented routes:
-* http://localhost:9000/
-* http://localhost:9000/admin
-* http://localhost:9000/admin/throw
-* http://localhost:9000/admin/fire
-* http://localhost:9000/params/100/anyparam
-* http://localhost:9000/favicon.ico
-* http://localhost:9000/assets/favicon.ico
-* http://localhost:9000/dynamic
-* http://localhost:9000/dynamic-simulation
-* http://localhost:9000/dynamic-db-simulation
+* http://localhost:8080/
+* http://localhost:8080/admin
+* http://localhost:8080/admin/throw
+* http://localhost:8080/admin/fire
+* http://localhost:8080/params/100/anyparam
+* http://localhost:8080/favicon.ico
+* http://localhost:8080/assets/favicon.ico
+* http://localhost:8080/dynamic
+* http://localhost:8080/dynamic-simulation
+* http://localhost:8080/dynamic-db-simulation

@@ -11,13 +11,13 @@ import {Injectable} from "@typeix/resty";
 export class InMemoryCacheService {
 
   private _cache: Map<string, string> = new Map();
-  private _timers: Map<string, NodeJS.Timer> = new Map();
+  private _timers: Map<string, NodeJS.Timer | number> = new Map();
 
   /**
      * Clear cache
      */
   clear(): void {
-    this._timers.forEach(timer => clearTimeout(timer));
+    this._timers.forEach(timer => clearTimeout(<number>timer));
     this._timers.clear();
     this._cache.clear();
   }
@@ -29,7 +29,7 @@ export class InMemoryCacheService {
      */
   delete(key: string): boolean {
     if (this._timers.has(key)) {
-      clearTimeout(this._timers.get(key));
+      clearTimeout(<number>this._timers.get(key));
       this._timers.delete(key);
     }
     return this._cache.delete(key);
