@@ -56,7 +56,7 @@ Typeix is an MIT-licensed open source project. It can grow thanks to the sponsor
 
 ## Stay in touch
 
-* Author - [Igor Ivanovic](https://twitter.com/igorzg1987)
+* Author - [Igor Ivanovic](https://x.com/typeixframework)
 * Website - [https://typeix.com](https://typeix.com)
 * Twitter - [@typeixframework](https://twitter.com/typeixframework)
 

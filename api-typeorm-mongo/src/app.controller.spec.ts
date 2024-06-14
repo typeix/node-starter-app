@@ -1,12 +1,21 @@
 import {Injector} from "@typeix/resty";
 import {AppController} from "./app.controller";
 import {AppService} from "./app.service";
+import {UserService} from "~/modules/data-store/services/user.service";
+import {MongoDataSource} from "~/modules/data-store/configs/mongo-data-source.service";
 
 describe("AppController", () => {
   let appController: AppController;
 
   beforeEach(async () => {
-    const injector = await Injector.createAndResolve(AppController, [AppService]);
+    const injector = await Injector.createAndResolve(AppController, [
+      {
+        provide: MongoDataSource,
+        useValue: {}
+      },
+      AppService,
+      UserService
+    ]);
     appController = injector.get(AppController);
   });
 

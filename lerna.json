@@ -1,8 +1,13 @@
 {
   "npmClient": "npm",
   "packages": [
+    "./api-typeorm-mongo",
+    "./api-typeorm-sql",
+    "./graphql-typeorm-sql",
+    "./ts-graphql",
     "./web-app-file-upload",
-    "./api-typeorm-sql"
+    "./webapp-socket-io",
+    "./websockets"
   ],
-  "version": "8.0.0"
+  "version": "8.7.0"
 }

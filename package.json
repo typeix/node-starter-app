@@ -5,16 +5,16 @@
   "description": "Resty server application starters",
   "scripts": {
     "coveralls-merge": "npm run test && node coveralls-merge.js",
-    "bootstrap": "lerna exec npm install",
+    "bootstrap": "lerna exec npm install --parallel",
     "prebuild": "npm run clean:coverage",
-    "build": "lerna exec npm run build",
-    "clean": "lerna exec rimraf dist",
-    "clean:coverage": "lerna exec rimraf coverage",
-    "clean:lock": "lerna exec rm package-lock.json",
-    "clean:node_packages": "lerna exec rm package-lock.json",
+    "build": "lerna exec npm run build --parallel",
+    "clean": "lerna exec rimraf dist --parallel",
+    "clean:coverage": "lerna exec rimraf coverage --parallel",
+    "clean:lock": "lerna exec rm package-lock.json  --parallel",
+    "clean:node_packages": "lerna exec rm package-lock.json  --parallel",
     "clean:all": "npm run clean && npm run clean:lock && npm run clean:node_packages",
-    "test": "lerna exec npm test",
-    "test:cov": "lerna exec npm run test:cov"
+    "test": "lerna exec npm test --parallel",
+    "test:cov": "lerna exec npm run test:cov --parallel"
   },
   "repository": {
     "type": "git",
