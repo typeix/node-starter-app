@@ -10,8 +10,8 @@
     "build": "lerna exec npm run build --parallel",
     "clean": "lerna exec rimraf dist --parallel",
     "clean:coverage": "lerna exec rimraf coverage --parallel",
-    "clean:lock": "lerna exec rm package-lock.json  --parallel",
-    "clean:node_packages": "lerna exec rm package-lock.json  --parallel",
+    "clean:lock": "lerna exec rm package-lock.json --parallel",
+    "clean:node_packages": "lerna exec rm package-lock.json --parallel",
     "clean:all": "npm run clean && npm run clean:lock && npm run clean:node_packages",
     "test": "lerna exec npm test --parallel",
     "test:cov": "lerna exec npm run test:cov --parallel"
