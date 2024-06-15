@@ -23,8 +23,8 @@
   "dependencies": {
     "@typeix/resty": "^8.7.0",
     "class-validator": "^0.14.0",
-    "graphql": "^15.8.0",
-    "type-graphql": "^1.1.1"
+    "graphql": "^16.8.2",
+    "type-graphql": "^2.0.0-rc.1"
   },
   "devDependencies": {
     "@typeix/cli": "^8.7.0",

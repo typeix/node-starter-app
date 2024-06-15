@@ -31,14 +31,16 @@ export class GraphqlController {
       throw new RouterError("GraphQL validation error.", 400, validationErrors);
     }
     return graphql(
-      schema,
-      source,
-      null,
       {
-        container: this.injector
-      },
-      variables,
-      operationName
+        schema: schema,
+        source: source,
+        rootValue: null,
+        contextValue: {
+          container: this.injector
+        },
+        variableValues: variables,
+        operationName: operationName
+      }
     );
   }
 
